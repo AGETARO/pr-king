@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "predeploy": "npm run build",
-    "deploy": "wrangler deploy"
+    "deploy": "wrangler deploy --no-autoconfig"
   },
   "dependencies": {
     "gray-matter": "^4.0.3",
