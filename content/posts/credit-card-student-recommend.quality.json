@@ -1,0 +1,29 @@
+{
+  "filePath": "C:\\Users\\ameri\\PR-KING\\site\\content\\posts\\credit-card-student-recommend.md",
+  "slug": "credit-card-student-recommend",
+  "title": "【2024年最新】学生におすすめのクレジットカード10選！失敗しない選び方と審査のコツを徹底解説",
+  "charCount": 4079,
+  "score": 50,
+  "passed": false,
+  "issues": [
+    "H1見出しがありません",
+    "景表法注意: \"絶対\" は根拠なく使用すると不当表示になります。データ・出典を明記するか削除してください。",
+    "過大表現: \"必ず\" は断定的表現です。「〜の場合があります」等に修正することを推奨します。",
+    "過大表現: \"絶対に\" は断定的表現です。「〜の場合があります」等に修正することを推奨します。"
+  ],
+  "warnings": [
+    "文字数: 4079文字 (目標5000文字)",
+    "体験談プレースホルダーがありません。E-E-A-T向上のため追加を推奨します。"
+  ],
+  "passes": [
+    "広告表記あり ✓ ✓",
+    "frontmatter: 必須フィールドあり ✓"
+  ],
+  "ngWords": [
+    "絶対",
+    "必ず",
+    "絶対に"
+  ],
+  "experiencePlaceholders": [],
+  "checkedAt": "2026-11-01T01:48:41.968Z"
+}
