@@ -1,19 +1,27 @@
-/* site/app/globals.css */
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Inter:wght@400;600;700&display=swap');
+/* site/app/globals.css - ギズモード・ジャパン風 スタイル、トンマナ、カラーデザイン */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+JP:wght@400;500;700;800;900&display=swap');
 
 :root {
-  --color-bg: #ffffff;
-  --color-surface: #f8fafc;
-  --color-border: #e2e8f0;
-  --color-text: #1a202c;
-  --color-text-muted: #64748b;
-  --color-primary: #6366f1;
-  --color-primary-dark: #4f46e5;
-  --color-accent: #8b5cf6;
-  --color-success: #10b981;
-  --color-warning: #f59e0b;
-  --max-width: 860px;
-  --sidebar-width: 260px;
+  /* ギズモード特有のカラーパレット */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f6f6f6;
+  --bg-tertiary: #eeeeee;
+  
+  --text-primary: #000000;
+  --text-secondary: #4b5563;
+  --text-muted: #737373;
+  --text-subtle: #9ca3af;
+  
+  --border-primary: #000000;
+  --border-subtle: #e5e5e5;
+  --border-light: #f0f0f0;
+  
+  /* 象徴的なネオンライムグリーン（添付画像で多用されているアクセントカラー） */
+  --accent-lime: #c4f000;
+  --accent-lime-hover: #b3dc00;
+  
+  --font-sans: 'Noto Sans JP', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-en: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 * {
@@ -23,127 +31,491 @@
 }
 
 body {
-  font-family: 'Noto Sans JP', 'Inter', sans-serif;
-  background: var(--color-bg);
-  color: var(--color-text);
+  font-family: var(--font-sans);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
   line-height: 1.8;
   font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 a {
-  color: var(--color-primary);
+  color: inherit;
   text-decoration: none;
+  transition: opacity 0.15s ease, color 0.15s ease;
 }
-a:hover { text-decoration: underline; }
 
-/* ヘッダー */
-.site-header {
-  background: white;
-  border-bottom: 1px solid var(--color-border);
+a:hover {
+  opacity: 0.8;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ====================================================
+   1. ヘッダー (Gizmodo Style)
+   ==================================================== */
+.gizmodo-header {
+  background: #ffffff;
+  border-bottom: 1.5px solid #111111;
   position: sticky;
   top: 0;
-  z-index: 100;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+  z-index: 1000;
+  width: 100%;
 }
 
-.header-inner {
-  max-width: 1200px;
+.header-container {
+  max-width: 1260px;
   margin: 0 auto;
   padding: 0 1.5rem;
-  height: 60px;
+  height: 56px;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.site-logo {
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: var(--color-primary);
-  text-decoration: none;
-}
-
-.site-nav {
+/* 左側：リアルタイム JST クロック */
+.header-left {
   display: flex;
-  gap: 1.5rem;
+  align-items: center;
+  width: 180px;
 }
 
-.site-nav a {
-  font-size: 0.875rem;
-  color: var(--color-text-muted);
-  font-weight: 500;
+.header-clock {
+  font-family: var(--font-en);
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #111111;
+  letter-spacing: -0.02em;
 }
 
-.site-nav a:hover {
-  color: var(--color-primary);
-  text-decoration: none;
+/* 中央：黒カプセル（Pill shape）ブランドロゴ */
+.header-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-/* メインレイアウト */
-.container {
-  max-width: 1200px;
+.gizmodo-logo-pill {
+  display: inline-block;
+  background: #000000;
+  color: #ffffff !important;
+  font-family: var(--font-en);
+  font-size: 1.35rem;
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  padding: 5px 36px;
+  border-radius: 9999px;
+  text-align: center;
+  line-height: 1.2;
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.gizmodo-logo-pill:hover {
+  opacity: 1;
+  transform: scale(1.02);
+}
+
+/* 右側：白カプセル型ピルボタン (MENU, ···, SNS) */
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  width: 180px;
+  justify-content: flex-end;
+}
+
+.header-pill-btn {
+  background: #ffffff;
+  color: #000000;
+  border: 1.5px solid #000000;
+  border-radius: 9999px;
+  padding: 4px 14px;
+  font-family: var(--font-en);
+  font-size: 0.78rem;
+  font-weight: 800;
+  cursor: pointer;
+  line-height: 1.3;
+  transition: all 0.15s ease;
+}
+
+.header-pill-btn:hover {
+  background: #000000;
+  color: #ffffff;
+}
+
+.header-pill-btn.dot-btn {
+  padding: 4px 10px;
+  letter-spacing: 0.05em;
+}
+
+.header-pill-btn.sns-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 4px 12px;
+}
+
+/* ====================================================
+   2. 全体コンテナ ＆ レイアウト
+   ==================================================== */
+.gizmodo-main-container {
+  max-width: 1260px;
   margin: 0 auto;
-  padding: 0 1.5rem;
+  padding: 1.75rem 1.5rem 5rem;
 }
 
-.layout-with-sidebar {
+.gizmodo-layout-grid {
   display: grid;
-  grid-template-columns: 1fr var(--sidebar-width);
+  grid-template-columns: 1fr 340px;
+  gap: 3.5rem;
+}
+
+@media (max-width: 1024px) {
+  .gizmodo-layout-grid {
+    grid-template-columns: 1fr 300px;
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 860px) {
+  .gizmodo-layout-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  .header-left {
+    display: none;
+  }
+  .header-right {
+    width: auto;
+  }
+}
+
+/* ====================================================
+   3. トップフィード (Gizmodo Feed)
+   ==================================================== */
+.gizmodo-feed {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+/* 1. Lead Feature (トップ注目記事 / サメ監視ドローン) */
+.gizmodo-lead-article {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.lead-meta-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: var(--font-en);
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.lead-timestamp {
+  color: #666666;
+}
+
+.lead-category-pill {
+  font-size: 0.72rem;
+  font-weight: 700;
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+  padding: 0.15rem 0.6rem;
+  border-radius: 9999px;
+  border: 1px solid var(--border-subtle);
+}
+
+.lead-headline {
+  font-size: clamp(1.8rem, 3.2vw, 2.5rem);
+  font-weight: 900;
+  line-height: 1.35;
+  color: #000000;
+  letter-spacing: -0.03em;
+  margin: 0.25rem 0 0.5rem;
+}
+
+.lead-headline a:hover {
+  opacity: 0.85;
+}
+
+.lead-image-wrapper {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background-color: var(--bg-secondary);
+  border-radius: 2px;
+}
+
+.lead-main-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.35s ease;
+}
+
+.lead-image-wrapper:hover .lead-main-image {
+  transform: scale(1.02);
+}
+
+/* 2. Sub Grid (2カラム記事カード) */
+.gizmodo-sub-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 2rem;
   padding: 2rem 0;
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
 }
 
-@media (max-width: 768px) {
-  .layout-with-sidebar {
+@media (max-width: 640px) {
+  .gizmodo-sub-grid {
     grid-template-columns: 1fr;
+    gap: 2rem;
   }
-  .sidebar { display: none; }
 }
 
-/* 記事カード */
-.post-grid {
+.sub-grid-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.65rem;
+}
+
+.sub-card-meta {
+  font-family: var(--font-en);
+  font-size: 0.76rem;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.sub-pr-badge {
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: #000000;
+  letter-spacing: 0.02em;
+}
+
+.sub-timestamp {
+  color: #777777;
+}
+
+.sub-card-title {
+  font-size: 1.05rem;
+  font-weight: 800;
+  line-height: 1.45;
+  color: #000000;
+  letter-spacing: -0.01em;
+  min-height: 3em;
+}
+
+.sub-card-thumb-wrap {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: var(--bg-secondary);
+  border-radius: 2px;
+}
+
+.sub-card-thumb {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.sub-card-thumb-wrap:hover .sub-card-thumb {
+  transform: scale(1.03);
+}
+
+/* 3. 特大「Feature」セクション */
+.gizmodo-feature-section {
+  margin-top: 1rem;
+}
+
+.feature-header-bar {
+  border-bottom: 3px solid #000000;
+  padding-bottom: 0.4rem;
+  margin-bottom: 2rem;
+}
+
+.feature-big-title {
+  font-family: var(--font-en);
+  font-size: clamp(2.5rem, 4.5vw, 3.4rem);
+  font-weight: 900;
+  letter-spacing: -0.05em;
+  color: #000000;
+  line-height: 1;
+  text-transform: capitalize;
+}
+
+.feature-article-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2.25rem;
+}
+
+.feature-row-article {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.feature-row-article:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.feature-row-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: var(--font-en);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.feature-date {
+  color: #777;
+}
+
+.feature-views-pill {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #111111;
+  background: var(--bg-secondary);
+  padding: 0.1rem 0.5rem;
+  border-radius: 4px;
+}
+
+.feature-row-title {
+  font-size: 1.25rem;
+  font-weight: 800;
+  line-height: 1.45;
+  color: #000000;
+  letter-spacing: -0.01em;
+}
+
+.feature-row-thumb-wrap {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  max-height: 360px;
+  overflow: hidden;
+  background: var(--bg-secondary);
+  border-radius: 2px;
+}
+
+.feature-row-thumb {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.feature-row-thumb-wrap:hover .feature-row-thumb {
+  transform: scale(1.02);
+}
+
+/* 4. 最新記事グリッド (Latest Stories) */
+.gizmodo-latest-section {
+  margin-top: 1.5rem;
+  padding-top: 2rem;
+  border-top: 2px solid #000000;
+}
+
+.latest-header-bar {
+  margin-bottom: 1.5rem;
+}
+
+.latest-section-title {
+  font-family: var(--font-en);
+  font-size: 1.6rem;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  color: #000000;
+}
+
+.latest-cards-grid {
   display: grid;
+  grid-template-columns: 1fr;
   gap: 1.5rem;
 }
 
-.post-card {
-  background: white;
-  border: 1px solid var(--color-border);
-  border-radius: 12px;
-  padding: 1.5rem;
-  transition: box-shadow 0.2s, transform 0.2s;
+.latest-story-card {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 1.5rem;
+  align-items: center;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border-light);
 }
 
-.post-card:hover {
-  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-  transform: translateY(-2px);
+@media (max-width: 640px) {
+  .latest-story-card {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
 }
 
-.post-card-category {
-  font-size: 0.7rem;
-  color: var(--color-primary);
+.latest-thumb-box {
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  border-radius: 2px;
+  background: var(--bg-secondary);
+}
+
+.latest-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.latest-thumb-box:hover .latest-card-img {
+  transform: scale(1.04);
+}
+
+.latest-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.latest-card-meta {
+  display: flex;
+  gap: 0.6rem;
+  font-size: 0.75rem;
+  color: var(--text-muted);
   font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  margin-bottom: 0.5rem;
 }
 
-.post-card-title {
-  font-size: 1.1rem;
+.latest-category {
+  color: #000000;
   font-weight: 700;
-  margin-bottom: 0.75rem;
-  line-height: 1.4;
 }
 
-.post-card-title a {
-  color: var(--color-text);
-  text-decoration: none;
+.latest-card-title {
+  font-size: 1.1rem;
+  font-weight: 800;
+  line-height: 1.45;
+  color: #000000;
 }
-.post-card-title a:hover { color: var(--color-primary); }
 
-.post-card-excerpt {
-  font-size: 0.875rem;
-  color: var(--color-text-muted);
+.latest-card-desc {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
   line-height: 1.6;
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -151,225 +523,928 @@ a:hover { text-decoration: underline; }
   overflow: hidden;
 }
 
-.post-card-meta {
+/* ====================================================
+   4. 右サイドバー (Gizmodo Sidebar)
+   ==================================================== */
+.gizmodo-sidebar {
   display: flex;
-  gap: 1rem;
-  margin-top: 1rem;
-  font-size: 0.75rem;
-  color: var(--color-text-muted);
+  flex-direction: column;
+  gap: 2rem;
 }
 
-/* 記事ページ */
-.article-header {
-  padding: 2rem 0 1.5rem;
-  border-bottom: 1px solid var(--color-border);
-  margin-bottom: 2rem;
+/* 1. スポンサーバナー 1 (Amazon風 / セール枠) */
+.gizmodo-ad-box {
+  background: #ffffff;
+  border: 1px solid var(--border-subtle);
+  border-radius: 4px;
+  padding: 1rem;
+  position: relative;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-.article-category {
+.gizmodo-ad-box:hover {
+  border-color: #000000;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.ad-corner-tag {
+  position: absolute;
+  top: 6px;
+  right: 8px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--text-subtle);
+}
+
+.gizmodo-ad-link {
+  display: grid;
+  grid-template-columns: 1fr 85px;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.ad-text-col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.ad-title-label {
   font-size: 0.75rem;
-  color: var(--color-primary);
-  font-weight: 600;
-  text-transform: uppercase;
+  font-weight: 800;
+  color: #111111;
+}
+
+.ad-product-name {
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: #000000;
+  line-height: 1.4;
+}
+
+.ad-badge-pill {
+  display: inline-block;
+  align-self: flex-start;
+  background: #ef4444;
+  color: #ffffff;
+  font-size: 0.68rem;
+  font-weight: 800;
+  padding: 0.15rem 0.5rem;
+  border-radius: 2px;
+  margin-top: 0.2rem;
+}
+
+.ad-prime-mark {
+  font-size: 0.72rem;
+  color: #0284c7;
+  font-weight: 700;
+}
+
+.ad-image-col {
+  width: 85px;
+  height: 85px;
+  background: #f8fafc;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.ad-thumb-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 2. カプセル型 検索バー (Gizmodo Pill Shape) */
+.gizmodo-search-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  border: 1.5px solid #000000;
+  border-radius: 9999px;
+  padding: 0.55rem 1.1rem;
+  background: #ffffff;
+  transition: box-shadow 0.2s ease;
+}
+
+.gizmodo-search-bar:focus-within {
+  box-shadow: 0 0 0 2px #000000;
+}
+
+.search-icon {
+  color: #000000;
+  flex-shrink: 0;
+}
+
+.gizmodo-search-input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #000000;
+  background: transparent;
+}
+
+.gizmodo-search-input::placeholder {
+  color: #888888;
+}
+
+/* 3. トレンド・人気タグ (Gizmodo特有の鮮やかなライムグリーン！) */
+.gizmodo-lime-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.lime-tag-pill {
+  background: var(--accent-lime);
+  color: #000000 !important;
+  font-family: var(--font-sans);
+  font-size: 0.76rem;
+  font-weight: 800;
+  padding: 0.32rem 0.85rem;
+  border-radius: 9999px;
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  letter-spacing: -0.01em;
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.lime-tag-pill:hover {
+  opacity: 1;
+  background: var(--accent-lime-hover);
+  transform: translateY(-1px);
+}
+
+/* 4. Ranking セクション (Gizmodo Ranking) */
+.gizmodo-ranking-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.ranking-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 0.5rem;
+}
+
+.ranking-heading {
+  font-family: var(--font-en);
+  font-size: 1.5rem;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  color: #000000;
+  margin: 0;
+}
+
+.ranking-sub-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #ffffff;
+  background: #000000;
+  padding: 0.1rem 0.45rem;
+  border-radius: 2px;
+}
+
+.ranking-tabs {
+  display: flex;
+  gap: 1.1rem;
+  border-bottom: 1px solid var(--border-subtle);
+  padding-bottom: 0.4rem;
+  margin-bottom: 1.25rem;
+}
+
+.ranking-tab-btn {
+  background: none;
+  border: none;
+  font-family: var(--font-en);
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #888888;
+  cursor: pointer;
+  padding-bottom: 0.25rem;
+  transition: color 0.15s ease;
+}
+
+.ranking-tab-btn:hover {
+  color: #000000;
+}
+
+.ranking-tab-btn.active {
+  color: #000000;
+  border-bottom: 2px solid #000000;
+  font-weight: 900;
+}
+
+.gizmodo-ranking-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.ranking-list-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding-bottom: 0.85rem;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.ranking-list-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.ranking-index {
+  font-family: var(--font-en);
+  font-size: 0.95rem;
+  font-weight: 900;
+  color: #000000;
+  width: 18px;
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+
+.ranking-card-link {
+  display: grid;
+  grid-template-columns: 50px 1fr;
+  gap: 0.75rem;
+  flex: 1;
+}
+
+.ranking-item-thumb {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 4px;
+  background: var(--bg-secondary);
+}
+
+.ranking-item-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.ranking-item-title {
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: #000000;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.ranking-item-meta {
+  display: flex;
+  gap: 0.6rem;
+  font-size: 0.74rem;
+  color: var(--text-muted);
+}
+
+.ranking-price {
+  font-weight: 700;
+  color: #000000;
+}
+
+.ranking-rating {
+  color: #eab308;
+  font-weight: 700;
+}
+
+.gizmodo-pill-action-btn {
+  display: block;
+  text-align: center;
+  border: 1.5px solid #000000;
+  border-radius: 9999px;
+  padding: 0.65rem 1rem;
+  font-family: var(--font-sans);
+  font-weight: 800;
+  font-size: 0.85rem;
+  color: #000000 !important;
+  margin-top: 1.25rem;
+  transition: all 0.2s ease;
+}
+
+.gizmodo-pill-action-btn:hover {
+  opacity: 1;
+  background: #000000;
+  color: #ffffff !important;
+}
+
+/* 5. ビジュアルバナー (ハリネズミ風 / 3Dアート枠) */
+.gizmodo-creative-banner {
+  background: #ffffff;
+  border: 1px solid var(--border-subtle);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.creative-img-wrapper {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #f1f5f9;
+}
+
+.creative-banner-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.creative-banner-footer {
+  padding: 0.85rem;
+  background: #ffffff;
+}
+
+.creative-desc {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #111111;
+  line-height: 1.45;
+  margin-bottom: 0.4rem;
+}
+
+.creative-pr-tag {
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
+/* 6. スポンサーバナー 3 (ServiceNow風 / 濃紺テックバナー) */
+.gizmodo-tech-banner {
+  background: linear-gradient(135deg, #091a3e 0%, #0d2861 100%);
+  color: #ffffff;
+  padding: 1.5rem 1.25rem;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.tech-banner-logo {
+  font-family: var(--font-en);
+  font-size: 0.75rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  color: var(--accent-lime);
+}
+
+.tech-banner-catch {
+  font-size: 1.05rem;
+  font-weight: 800;
+  line-height: 1.45;
+  color: #ffffff;
+}
+
+.tech-banner-sub {
+  font-size: 0.8rem;
+  color: #cbd5e1;
+  line-height: 1.5;
+}
+
+.tech-banner-btn {
+  display: inline-block;
+  align-self: flex-start;
+  background: var(--accent-lime);
+  color: #000000;
+  font-size: 0.75rem;
+  font-weight: 800;
+  padding: 0.35rem 0.8rem;
+  border-radius: 4px;
+  margin-top: 0.4rem;
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+
+.tech-banner-btn:hover {
+  transform: translateY(-1px);
+}
+
+/* 7. カテゴリーボックス */
+.gizmodo-categories-box {
+  background: #ffffff;
+  border-top: 2px solid #000000;
+  padding-top: 1rem;
+}
+
+.categories-box-title {
+  font-family: var(--font-en);
+  font-size: 0.95rem;
+  font-weight: 900;
   letter-spacing: 0.05em;
   margin-bottom: 0.75rem;
+  color: #000000;
 }
 
-.article-title {
-  font-size: clamp(1.5rem, 4vw, 2rem);
-  font-weight: 700;
-  line-height: 1.35;
-  margin-bottom: 0.75rem;
-}
-
-.article-meta {
-  font-size: 0.8rem;
-  color: var(--color-text-muted);
+.gizmodo-cat-list {
+  list-style: none;
   display: flex;
-  gap: 1rem;
+  flex-direction: column;
+}
+
+.cat-row {
+  border-bottom: 1px solid var(--border-light);
+}
+
+.cat-row-link {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
+  padding: 0.65rem 0;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #333333;
+}
+
+.cat-row-link:hover {
+  color: #000000;
+  padding-left: 0.25rem;
+}
+
+.cat-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  background: var(--bg-secondary);
+  color: var(--text-muted);
+  padding: 0.1rem 0.5rem;
+  border-radius: 9999px;
+}
+
+/* ====================================================
+   5. 記事詳細ページ (Post Detail)
+   ==================================================== */
+.gizmodo-breadcrumbs {
+  font-family: var(--font-en);
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 1.5rem;
   flex-wrap: wrap;
 }
 
-/* 広告表記 */
-.ad-disclosure {
-  background: #fef9ec;
-  border: 1px solid #fde68a;
-  border-radius: 6px;
-  padding: 0.6rem 1rem;
-  font-size: 0.8rem;
-  color: #92400e;
-  margin-bottom: 1.5rem;
+.gizmodo-breadcrumbs a {
+  color: var(--text-muted);
 }
 
-/* 記事本文 */
-.article-content {
-  max-width: var(--max-width);
+.gizmodo-breadcrumbs a:hover {
+  color: #000000;
 }
 
-.article-content h1 { font-size: 1.75rem; margin: 2rem 0 1rem; }
-.article-content h2 {
-  font-size: 1.35rem;
-  margin: 2.5rem 0 1rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 2px solid var(--color-border);
-}
-.article-content h3 { font-size: 1.15rem; margin: 2rem 0 0.75rem; color: var(--color-text); }
-.article-content h4 { font-size: 1rem; margin: 1.5rem 0 0.5rem; }
-
-.article-content p { margin-bottom: 1.25rem; }
-
-.article-content ul, .article-content ol {
-  margin: 0.75rem 0 1.25rem 1.5rem;
-}
-.article-content li { margin-bottom: 0.4rem; }
-
-.article-content table {
-  width: 100%;
-  border-collapse: collapse;
-  margin: 1.5rem 0;
-  font-size: 0.875rem;
-  overflow-x: auto;
-  display: block;
+.gizmodo-breadcrumbs .sep {
+  color: var(--border-subtle);
 }
 
-.article-content th {
-  background: var(--color-surface);
-  font-weight: 600;
-  padding: 0.6rem 1rem;
-  border: 1px solid var(--color-border);
-  text-align: left;
+.gizmodo-breadcrumbs .current {
+  color: #000000;
+  max-width: 320px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.article-content td {
-  padding: 0.6rem 1rem;
-  border: 1px solid var(--color-border);
+.gizmodo-article-container {
+  display: flex;
+  flex-direction: column;
 }
 
-.article-content tr:nth-child(even) td { background: #fafafa; }
-
-.article-content blockquote {
-  border-left: 4px solid var(--color-primary);
-  padding: 0.75rem 1.25rem;
-  margin: 1.5rem 0;
-  background: var(--color-surface);
-  border-radius: 0 8px 8px 0;
-  font-size: 0.9rem;
-  color: var(--color-text-muted);
-}
-
-.article-content code {
-  background: var(--color-surface);
-  padding: 0.15em 0.4em;
-  border-radius: 4px;
-  font-size: 0.875em;
-  font-family: 'Courier New', monospace;
-}
-
-.article-content pre {
-  background: #1e1e2e;
-  color: #cdd6f4;
-  padding: 1.25rem;
-  border-radius: 8px;
-  overflow-x: auto;
-  margin: 1.5rem 0;
-}
-
-.article-content pre code {
-  background: none;
-  padding: 0;
-  font-size: 0.875rem;
-}
-
-.article-content a[rel*="nofollow"] {
-  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
-  color: white;
-  padding: 0.15em 0.6em;
-  border-radius: 4px;
-  font-weight: 600;
-  font-size: 0.9em;
-  text-decoration: none;
-}
-
-/* 関連記事 */
-.related-section {
-  background: var(--color-surface);
-  border-radius: 12px;
-  padding: 1.5rem;
-  margin-top: 3rem;
-}
-
-.related-section h2 {
-  font-size: 1rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
-  color: var(--color-text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-.related-list {
-  list-style: none;
-  display: grid;
-  gap: 0.75rem;
-}
-
-.related-list li a {
+.article-entry-meta {
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.6rem;
+}
+
+.article-entry-date {
+  font-family: var(--font-en);
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
+.article-meta-tags {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.article-cluster-pill {
+  font-size: 0.72rem;
+  font-weight: 700;
+  background: var(--accent-lime);
+  color: #000000;
+  padding: 0.15rem 0.65rem;
+  border-radius: 9999px;
+}
+
+.article-pr-notice {
+  font-size: 0.7rem;
+  font-weight: 800;
+  background: #000000;
+  color: #ffffff;
+  padding: 0.1rem 0.45rem;
+  border-radius: 2px;
+}
+
+.gizmodo-post-title {
+  font-size: clamp(1.75rem, 3.4vw, 2.5rem);
+  font-weight: 900;
+  line-height: 1.35;
+  color: #000000;
+  letter-spacing: -0.03em;
+  margin-bottom: 0.85rem;
+}
+
+.gizmodo-post-sub-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
   gap: 0.5rem;
-  color: var(--color-text);
-  font-size: 0.9rem;
-  font-weight: 500;
-  padding: 0.5rem 0;
-}
-.related-list li a::before { content: '→'; color: var(--color-primary); }
-
-/* サイドバー */
-.sidebar {
-  position: sticky;
-  top: 80px;
-  height: fit-content;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border-subtle);
+  margin-bottom: 1.25rem;
 }
 
-.sidebar-widget {
-  background: white;
-  border: 1px solid var(--color-border);
-  border-radius: 12px;
-  padding: 1.25rem;
+.post-view-count {
+  font-family: var(--font-en);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #222222;
+}
+
+.post-discrete-pr-note {
+  font-size: 9pt;
+  color: var(--text-muted);
+}
+
+/* アイキャッチコンポーネント (ArticleEyecatch) */
+.gizmodo-eyecatch-wrapper {
+  margin: 1.25rem 0 2.5rem;
+}
+
+.gizmodo-eyecatch-image-box {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  max-height: 480px;
+  overflow: hidden;
+  border-radius: 2px;
+  background: var(--bg-secondary);
+  position: relative;
+}
+
+.gizmodo-eyecatch-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.gizmodo-eyecatch-badge-tag {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background: #000000;
+  color: #ffffff;
+  font-family: var(--font-en);
+  font-size: 0.75rem;
+  font-weight: 800;
+  padding: 0.3rem 0.8rem;
+  letter-spacing: 0.05em;
+  border-radius: 2px;
+}
+
+.gizmodo-eyecatch-caption {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-top: 0.5rem;
+  padding: 0 0.25rem;
+}
+
+.caption-credit {
+  font-family: var(--font-en);
+  font-size: 0.72rem;
+}
+
+/* SNSシェアボタン (Gizmodo Style) */
+.sns-share-wrapper {
+  margin: 1.25rem 0 1.5rem;
+}
+
+.sns-share-buttons {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+}
+
+.sns-btn {
+  height: 40px;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #000000 !important;
+  background: #ffffff;
+  border: 1.5px solid #000000;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  font-weight: 700;
+}
+
+.sns-btn:hover {
+  background: #000000;
+  color: #ffffff !important;
+  opacity: 1;
+}
+
+.sns-btn-copy.copied {
+  background: #000000;
+  color: var(--accent-lime) !important;
+}
+
+/* 記事本文 (Markdown) */
+.gizmodo-post-body {
+  color: #1f2937;
+  font-size: 1.05rem;
+  line-height: 2;
+  margin-bottom: 3.5rem;
+}
+
+.gizmodo-post-body h2 {
+  font-size: 1.45rem;
+  font-weight: 900;
+  color: #000000;
+  border-left: 6px solid #000000;
+  padding-left: 1rem;
+  margin: 3.5rem 0 1.5rem;
+  letter-spacing: -0.02em;
+  line-height: 1.4;
+}
+
+.gizmodo-post-body h3 {
+  font-size: 1.22rem;
+  font-weight: 800;
+  color: #000000;
+  border-bottom: 2px solid #000000;
+  padding-bottom: 0.5rem;
+  margin: 2.75rem 0 1.25rem;
+}
+
+.gizmodo-post-body h4 {
+  font-size: 1.08rem;
+  font-weight: 800;
+  color: #111111;
+  margin: 1.75rem 0 0.85rem;
+}
+
+.gizmodo-post-body p {
+  margin-bottom: 1.65rem;
+}
+
+.gizmodo-post-body p img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: 2px;
+  margin: 2rem 0 1rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+}
+
+.gizmodo-post-body ul, .gizmodo-post-body ol {
+  margin: 1.25rem 0 1.75rem 1.75rem;
+}
+
+.gizmodo-post-body li {
+  margin-bottom: 0.5rem;
+}
+
+.gizmodo-post-body blockquote {
+  border-left: 4px solid var(--accent-lime);
+  background: var(--bg-secondary);
+  padding: 1rem 1.5rem;
+  margin: 2rem 0;
+  color: #374151;
+  font-style: normal;
+  border-radius: 0 4px 4px 0;
+}
+
+.gizmodo-post-body table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2.5rem 0;
+  font-size: 0.95rem;
+  border: 1.5px solid #000000;
+}
+
+.gizmodo-post-body th {
+  background: #000000;
+  color: #ffffff;
+  font-weight: 800;
+  padding: 0.85rem 1rem;
+  text-align: left;
+  border: 1px solid #000000;
+}
+
+.gizmodo-post-body td {
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--border-subtle);
+}
+
+.gizmodo-post-body tr:nth-child(even) td {
+  background: var(--bg-secondary);
+}
+
+.gizmodo-post-body hr {
+  border: none;
+  border-top: 2px solid #000000;
+  margin: 3rem 0;
+}
+
+/* アフィリエイトCTAカード (ショートコード展開) */
+.affiliate-card {
+  background: #ffffff;
+  border: 2px solid #000000;
+  border-radius: 4px;
+  padding: 2rem 1.5rem;
+  margin: 2.5rem 0;
+  text-align: center;
+}
+
+.affiliate-card .btn-cta {
+  display: inline-block;
+  background: #000000;
+  color: #ffffff !important;
+  font-weight: 900;
+  font-size: 1.05rem;
+  padding: 0.9rem 2.5rem;
+  border-radius: 9999px;
+  letter-spacing: -0.01em;
+  transition: all 0.2s ease;
+}
+
+.affiliate-card .btn-cta:hover {
+  background: var(--accent-lime);
+  color: #000000 !important;
+  opacity: 1;
+}
+
+/* 記事末尾のシェア */
+.gizmodo-bottom-share {
+  margin: 3rem 0;
+  padding: 2rem 0;
+  border-top: 2px solid #000000;
+  border-bottom: 2px solid #000000;
+  text-align: center;
+}
+
+.bottom-share-label {
+  font-family: var(--font-en);
+  font-size: 1.1rem;
+  font-weight: 900;
+  letter-spacing: 0.05em;
+  color: #000000;
+  margin-bottom: 1.25rem;
+}
+
+/* 関連記事 (RECOMMENDED) */
+.gizmodo-related-stories {
+  margin-top: 1rem;
+}
+
+.related-header {
+  border-bottom: 2px solid #000000;
+  padding-bottom: 0.5rem;
   margin-bottom: 1.5rem;
 }
 
-.sidebar-widget h3 {
-  font-size: 0.8rem;
+.related-title {
+  font-family: var(--font-en);
+  font-size: 1.35rem;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  color: #000000;
+}
+
+.related-cards-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+@media (max-width: 640px) {
+  .related-cards-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.related-card-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.related-thumb-wrapper {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: 2px;
+  background: var(--bg-secondary);
+}
+
+.related-thumb {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.related-thumb-wrapper:hover .related-thumb {
+  transform: scale(1.03);
+}
+
+.related-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.related-cat-label {
+  font-size: 0.72rem;
   font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--color-text-muted);
-  margin-bottom: 1rem;
+  color: var(--text-muted);
 }
 
-.toc-list {
-  list-style: none;
-  font-size: 0.85rem;
+.related-card-heading {
+  font-size: 0.95rem;
+  font-weight: 800;
+  line-height: 1.45;
+  color: #000000;
 }
 
-.toc-list li { margin-bottom: 0.5rem; }
-.toc-list a { color: var(--color-text-muted); }
-.toc-list a:hover { color: var(--color-primary); text-decoration: none; }
+.related-date {
+  font-family: var(--font-en);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
 
-/* フッター */
-.site-footer {
-  background: var(--color-surface);
-  border-top: 1px solid var(--color-border);
-  padding: 2rem 0;
+/* ====================================================
+   6. フッター (Gizmodo Style)
+   ==================================================== */
+.gizmodo-footer {
+  background: #ffffff;
+  border-top: 2px solid #000000;
+  padding: 3rem 0;
   margin-top: 4rem;
 }
 
-.footer-inner {
-  max-width: 1200px;
+.footer-container {
+  max-width: 1260px;
   margin: 0 auto;
   padding: 0 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.footer-logo {
+  font-size: 1.15rem !important;
+  padding: 4px 24px !important;
+}
+
+.footer-nav {
+  display: flex;
+  gap: 1.5rem;
+  font-family: var(--font-en);
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: #000000;
+}
+
+.footer-nav a:hover {
+  text-decoration: underline;
+}
+
+.footer-bottom {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -377,41 +1452,14 @@ a:hover { text-decoration: underline; }
   gap: 1rem;
 }
 
-.footer-note {
+.footer-affiliate-note {
+  font-size: 9pt;
+  color: var(--text-muted);
+}
+
+.footer-copyright {
+  font-family: var(--font-en);
   font-size: 0.75rem;
-  color: var(--color-text-muted);
-}
-
-/* ページネーション */
-.pagination {
-  display: flex;
-  justify-content: center;
-  gap: 0.5rem;
-  margin-top: 2rem;
-}
-
-.pagination a {
-  padding: 0.5rem 1rem;
-  border: 1px solid var(--color-border);
-  border-radius: 6px;
-  font-size: 0.875rem;
-  color: var(--color-text-muted);
-}
-
-.pagination a.active, .pagination a:hover {
-  background: var(--color-primary);
-  color: white;
-  border-color: var(--color-primary);
-  text-decoration: none;
-}
-
-/* ユーティリティ */
-.badge {
-  display: inline-block;
-  padding: 0.2rem 0.6rem;
-  border-radius: 20px;
-  font-size: 0.7rem;
-  font-weight: 600;
-  background: rgba(99,102,241,0.1);
-  color: var(--color-primary);
+  font-weight: 700;
+  color: var(--text-muted);
 }

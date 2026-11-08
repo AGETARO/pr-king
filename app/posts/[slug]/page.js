@@ -1,7 +1,12 @@
-// site/app/posts/[slug]/page.js - 記事詳細ページ
-import { getAllPostSlugs, getPostWithHtml, getRelatedPosts } from '../../../lib/posts';
+// site/app/posts/[slug]/page.js - ギズモード風 記事詳細ページ
+import { getAllPostSlugs, getPostWithHtml, getRelatedPosts, getClusters, getPopularPosts } from '../../../lib/posts';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import ShareButtons from '../../../components/ShareButtons';
+import ArticleEyecatch from '../../../components/ArticleEyecatch';
+import Sidebar from '../../../components/Sidebar';
+
+export const dynamicParams = false;
 
 export async function generateStaticParams() {
   const slugs = getAllPostSlugs();
@@ -19,6 +24,7 @@ export async function generateMetadata({ params }) {
         description: post.description,
         type: 'article',
         publishedTime: post.updated,
+        images: [{ url: post.eyecatch || post.image }],
       },
       alternates: {
         canonical: `/posts/${params.slug}/`,
@@ -38,13 +44,16 @@ export default async function PostPage({ params }) {
   }
 
   const relatedPosts = getRelatedPosts(post, 4);
+  const clusters = getClusters();
+  const popularPosts = getPopularPosts(5);
 
-  // 構造化データ (Article + FAQ)
+  // 構造化データ (Article)
   const structuredData = {
     '@context': 'https://schema.org',
     '@type': 'Article',
     headline: post.title,
     description: post.description,
+    image: post.eyecatch || post.image,
     dateModified: post.updated,
     author: { '@type': 'Organization', name: process.env.SITE_NAME || 'PR-KING' },
     publisher: {
@@ -53,9 +62,6 @@ export default async function PostPage({ params }) {
     },
   };
 
-  const hasAffiliate = (post.affiliateIds || []).length > 0
-    || post.contentHtml?.includes('nofollow');
-
   return (
     <>
       <script
@@ -63,71 +69,105 @@ export default async function PostPage({ params }) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
 
-      <div className="container">
-        <div className="layout-with-sidebar">
-          {/* メインコンテンツ */}
-          <article>
-            <header className="article-header">
-              {post.category && <div className="article-category">{post.category}</div>}
-              <h1 className="article-title">{post.title}</h1>
-              <div className="article-meta">
-                <span>📅 更新: {post.updated}</span>
-                {post.articleType && <span className="badge">{post.articleType}</span>}
-              </div>
-            </header>
+      <div className="gizmodo-main-container">
+        {/* パンくずリスト */}
+        <nav className="gizmodo-breadcrumbs" aria-label="パンくずリスト">
+          <Link href="/">TOP</Link>
+          <span className="sep">/</span>
+          {post.cluster && (
+            <>
+              <Link href={`/?cluster=${encodeURIComponent(post.cluster)}`}>{post.cluster}</Link>
+              <span className="sep">/</span>
+            </>
+          )}
+          <span className="current">{post.title}</span>
+        </nav>
 
-            {/* 広告表記 */}
-            {hasAffiliate && (
-              <div className="ad-disclosure">
-                ※ 本記事にはプロモーション（広告）が含まれます。掲載商品の選定は編集部が独自に行っています。
-              </div>
-            )}
-
-            {/* 記事本文 */}
-            <div
-              className="article-content"
-              dangerouslySetInnerHTML={{ __html: post.contentHtml }}
-            />
-
-            {/* 関連記事 */}
-            {relatedPosts.length > 0 && (
-              <aside className="related-section">
-                <h2>関連記事</h2>
-                <ul className="related-list">
-                  {relatedPosts.map(rp => (
-                    <li key={rp.slug}>
-                      <Link href={`/posts/${rp.slug}/`}>{rp.title}</Link>
-                    </li>
-                  ))}
-                </ul>
-              </aside>
-            )}
-          </article>
-
-          {/* サイドバー */}
-          <aside className="sidebar">
-            <div className="sidebar-widget">
-              <h3>この記事について</h3>
-              <div style={{ fontSize: '0.85rem', color: 'var(--color-text-muted)', lineHeight: 1.7 }}>
-                {post.keyword && <p>🔍 キーワード: {post.keyword}</p>}
-                {post.cluster && <p>📁 クラスター: {post.cluster}</p>}
-                {post.updated && <p>📅 最終更新: {post.updated}</p>}
+        <div className="gizmodo-layout-grid">
+          {/* メイン記事カラム */}
+          <article className="gizmodo-article-container">
+            {/* 記事メタヘッダー */}
+            <div className="article-entry-meta">
+              <time className="article-entry-date">{post.formattedDate || post.updated}</time>
+              <div className="article-meta-tags">
+                <span className="article-cluster-pill">{post.cluster || post.category}</span>
+                <span className="article-pr-notice">PR</span>
               </div>
             </div>
 
+            {/* 記事メインタイトル */}
+            <h1 className="gizmodo-post-title">{post.title}</h1>
+
+            {/* 閲覧数 & ひっそりと配置された9ptのPR注記 */}
+            <div className="gizmodo-post-sub-bar">
+              <span className="post-view-count">👁️ {post.views} views</span>
+              <span className="post-discrete-pr-note">※本記事にはアフィリエイト・プロモーション広告が含まれます</span>
+            </div>
+
+            {/* 上部 SNSシェアボタン */}
+            <ShareButtons title={post.title} slug={post.slug} />
+
+            {/* 大迫力アイキャッチ画像 (Unsplash高解像度写真) */}
+            <ArticleEyecatch
+              title={post.title}
+              category={post.category}
+              cluster={post.cluster}
+              imageUrl={post.eyecatch || post.image}
+            />
+
+            {/* 記事本文 (Markdown) */}
+            <div
+              className="gizmodo-post-body"
+              dangerouslySetInnerHTML={{ __html: post.contentHtml }}
+            />
+
+            {/* 記事末尾のシェアエリア */}
+            <div className="gizmodo-bottom-share">
+              <h4 className="bottom-share-label">SHARE THIS STORY</h4>
+              <ShareButtons title={post.title} slug={post.slug} />
+            </div>
+
+            {/* 関連記事セクション (Gizmodoカードグリッド) */}
             {relatedPosts.length > 0 && (
-              <div className="sidebar-widget">
-                <h3>関連記事</h3>
-                <ul className="toc-list">
-                  {relatedPosts.slice(0, 5).map(rp => (
-                    <li key={rp.slug}>
-                      <Link href={`/posts/${rp.slug}/`}>{rp.title}</Link>
-                    </li>
+              <section className="gizmodo-related-stories">
+                <div className="related-header">
+                  <h3 className="related-title">RECOMMENDED</h3>
+                </div>
+                <div className="related-cards-grid">
+                  {relatedPosts.map((rp) => (
+                    <article key={rp.slug} className="related-card-item">
+                      <div className="related-thumb-wrapper">
+                        <Link href={`/posts/${rp.slug}/`}>
+                          <img
+                            src={rp.eyecatch || rp.image}
+                            alt={rp.title}
+                            className="related-thumb"
+                            loading="lazy"
+                          />
+                        </Link>
+                      </div>
+                      <div className="related-body">
+                        <span className="related-cat-label">{rp.cluster || rp.category}</span>
+                        <h4 className="related-card-heading">
+                          <Link href={`/posts/${rp.slug}/`}>
+                            {rp.title}
+                          </Link>
+                        </h4>
+                        <time className="related-date">{rp.formattedDate}</time>
+                      </div>
+                    </article>
                   ))}
-                </ul>
-              </div>
+                </div>
+              </section>
             )}
-          </aside>
+          </article>
+
+          {/* 右サイドバー */}
+          <Sidebar
+            clusters={clusters}
+            popularPosts={popularPosts}
+            currentSlug={post.slug}
+          />
         </div>
       </div>
     </>
