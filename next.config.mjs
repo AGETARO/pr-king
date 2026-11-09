@@ -6,7 +6,7 @@ const nextConfig = {
     unoptimized: true, // 静的エクスポート時は最適化無効
   },
   env: {
-    SITE_URL: process.env.SITE_URL || 'https://your-site.com',
+    SITE_URL: process.env.SITE_URL || 'https://pr-king-site.pr-king.workers.dev',
     SITE_NAME: process.env.SITE_NAME || 'PR-KING',
   },
 };

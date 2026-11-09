@@ -10,7 +10,8 @@ export default function ShareButtons({ title, slug }) {
     if (typeof window !== 'undefined') {
       return window.location.href;
     }
-    return `https://pr-king-site.america0114.workers.dev/posts/${slug}/`;
+    const siteUrl = process.env.SITE_URL || 'https://pr-king-site.pr-king.workers.dev';
+    return `${siteUrl}/posts/${slug}/`;
   };
 
   const handleCopy = async () => {
