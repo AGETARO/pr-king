@@ -1,10 +1,12 @@
 // site/app/layout.js - ギズモード・ジャパン風モダンテックマガジン
 import './globals.css';
 import Link from 'next/link';
+import Script from 'next/script';
 import HeaderClock from '../components/HeaderClock';
 
 const SITE_NAME = process.env.SITE_NAME || 'PR-KING';
-const SITE_URL = process.env.SITE_URL || 'https://your-site.com';
+const SITE_URL = process.env.SITE_URL || 'https://pr-king-site.pr-king.workers.dev';
+const GA_ID = process.env.GA_MEASUREMENT_ID || 'G-5CNSFL3W12';
 
 export const metadata = {
   metadataBase: new URL(SITE_URL),
@@ -23,6 +25,30 @@ export default function RootLayout({ children }) {
   return (
     <html lang="ja">
       <body>
+        {/* Google Analytics (GA4) */}
+        {GA_ID && (
+          <>
+            <Script
+              strategy="afterInteractive"
+              src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
+            />
+            <Script
+              id="google-analytics"
+              strategy="afterInteractive"
+              dangerouslySetInnerHTML={{
+                __html: `
+                  window.dataLayer = window.dataLayer || [];
+                  function gtag(){dataLayer.push(arguments);}
+                  gtag('js', new Date());
+                  gtag('config', '${GA_ID}', {
+                    page_path: window.location.pathname,
+                  });
+                `,
+              }}
+            />
+          </>
+        )}
+
         {/* Gizmodo Style Top Header */}
         <header className="gizmodo-header">
           <div className="header-container">
