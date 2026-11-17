@@ -6,7 +6,7 @@ import HeaderClock from '../components/HeaderClock';
 
 const SITE_NAME = process.env.SITE_NAME || 'PR-KING';
 const SITE_URL = process.env.SITE_URL || 'https://pr-king-site.pr-king.workers.dev';
-const GA_ID = process.env.GA_MEASUREMENT_ID || 'G-5CNSFL3W12';
+const GA_ID = process.env.GA_MEASUREMENT_ID || 'G-FTPK04ND5P';
 
 export const metadata = {
   metadataBase: new URL(SITE_URL),
