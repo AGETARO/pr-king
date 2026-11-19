@@ -5,7 +5,7 @@ import Script from 'next/script';
 import HeaderClock from '../components/HeaderClock';
 
 const SITE_NAME = process.env.SITE_NAME || 'PR-KING';
-const SITE_URL = process.env.SITE_URL || 'https://pr-king-site.pr-king.workers.dev';
+const SITE_URL = process.env.SITE_URL || 'https://lifetime.pr-king.workers.dev';
 const GA_ID = process.env.GA_MEASUREMENT_ID || 'G-FTPK04ND5P';
 
 export const metadata = {
