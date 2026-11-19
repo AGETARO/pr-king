@@ -19,6 +19,9 @@ export const metadata = {
   },
   robots: { index: true, follow: true },
   alternates: { canonical: SITE_URL },
+  verification: {
+    google: 'google6d7c871c5aeaffe7',
+  },
 };
 
 export default function RootLayout({ children }) {
