@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://lifetime.pr-king.workers.dev/sitemap.xml
+
