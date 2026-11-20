@@ -7,8 +7,8 @@ category: クレジットカード
 cluster: 学生向けクレジットカード総合・選び方
 keyword: クレジットカード 学生 おすすめ
 article_type: ranking
-eyecatch: https://images.unsplash.com/photo-1559526324-593bc073d998?auto=format&fit=crop&w=1200&q=80
-image: https://images.unsplash.com/photo-1559526324-593bc073d998?auto=format&fit=crop&w=1200&q=80
+eyecatch: https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=1200&q=80
+image: https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=1200&q=80
 related:
   - クレジットカード 学生 visa
   - クレジットカード 学生 楽天

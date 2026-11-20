@@ -5,11 +5,11 @@ import Link from 'next/link';
 
 // ランキング用の高解像度アイテム画像
 const RANKING_THUMBNAILS = [
-  'https://images.unsplash.com/photo-1556742049-0a67c5574f73?auto=format&fit=crop&w=160&h=160&q=80',
+  'https://images.unsplash.com/photo-1556742044-3c52d6e88c62?auto=format&fit=crop&w=160&h=160&q=80',
   'https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&w=160&h=160&q=80',
   'https://images.unsplash.com/photo-1556740758-90de374c12ad?auto=format&fit=crop&w=160&h=160&q=80',
   'https://images.unsplash.com/photo-1589758438368-0ad531db3366?auto=format&fit=crop&w=160&h=160&q=80',
-  'https://images.unsplash.com/photo-1559526324-593bc073d998?auto=format&fit=crop&w=160&h=160&q=80',
+  'https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=160&h=160&q=80',
 ];
 
 export default function Sidebar({ clusters = [], popularPosts = [], currentSlug = '' }) {

@@ -2,7 +2,7 @@
 import React from 'react';
 
 export default function ArticleEyecatch({ title, category, cluster, imageUrl }) {
-  const finalImage = imageUrl || 'https://images.unsplash.com/photo-1556742049-0a67c5574f73?auto=format&fit=crop&w=1200&q=80';
+  const finalImage = imageUrl || 'https://images.unsplash.com/photo-1556742044-3c52d6e88c62?auto=format&fit=crop&w=1200&q=80';
 
   return (
     <figure className="gizmodo-eyecatch-wrapper">

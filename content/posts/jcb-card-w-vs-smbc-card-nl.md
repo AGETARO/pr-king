@@ -7,8 +7,8 @@ category: クレジットカード
 cluster: クレジットカード比較
 keyword: JCB CARD W 三井住友カード NL 比較 どっち Amazon コンビニ スタバ 還元率
 article_type: comparison
-eyecatch: https://images.unsplash.com/photo-1556742049-0a67c5574f73?auto=format&fit=crop&w=1200&q=80
-image: https://images.unsplash.com/photo-1556742049-0a67c5574f73?auto=format&fit=crop&w=1200&q=80
+eyecatch: https://images.unsplash.com/photo-1556742502-ec7c0e9f34b1?auto=format&fit=crop&w=1200&q=80
+image: https://images.unsplash.com/photo-1556742502-ec7c0e9f34b1?auto=format&fit=crop&w=1200&q=80
 related:
   - recommended-credit-cards-ranking
   - smbc-card-nl-vs-gold-vs-platinum-preferred

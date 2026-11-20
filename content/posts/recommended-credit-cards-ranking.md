@@ -7,8 +7,8 @@ category: クレジットカード
 cluster: クレジットカード比較・おすすめ
 keyword: クレジットカード おすすめ 比較 高還元
 article_type: ranking
-eyecatch: https://images.unsplash.com/photo-1556742049-0a67c5574f73?auto=format&fit=crop&w=1200&q=80
-image: https://images.unsplash.com/photo-1556742049-0a67c5574f73?auto=format&fit=crop&w=1200&q=80
+eyecatch: https://images.unsplash.com/photo-1556742044-3c52d6e88c62?auto=format&fit=crop&w=1200&q=80
+image: https://images.unsplash.com/photo-1556742044-3c52d6e88c62?auto=format&fit=crop&w=1200&q=80
 related:
   - credit-card-student-recommend
   - inflation-survival-saving-tips
@@ -26,7 +26,7 @@ updated: '2026-11-17'
 
 キャッシュレス化が完全に定着した現在、毎日のコンビニやスーパー、ネットショッピング、光熱費の支払いまで、どのクレジットカードを使うかによって**年間で数万〜十数万円単位の還元差**が生まれます。
 
-![スマートな決済と高還元クレジットカード](https://images.unsplash.com/photo-1556742049-0a67c5574f73?auto=format&fit=crop&w=1000&q=80)
+![スマートな決済と高還元クレジットカード](https://images.unsplash.com/photo-1556742044-3c52d6e88c62?auto=format&fit=crop&w=1000&q=80)
 
 しかし、カードによって「コンビニに強い」「Amazonでお得」「旅行保険が充実」など強みが全く異なります。
 

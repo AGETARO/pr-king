@@ -7,8 +7,8 @@ category: クレジットカード
 cluster: 学生向けクレジットカード総合・選び方
 keyword: クレジットカード 学生 おすすめ
 article_type: ranking
-eyecatch: https://images.unsplash.com/photo-1556742049-0a67c5574f73?auto=format&fit=crop&w=1200&q=80
-image: https://images.unsplash.com/photo-1556742049-0a67c5574f73?auto=format&fit=crop&w=1200&q=80
+eyecatch: https://images.unsplash.com/photo-1556742111-a301076d9d18?auto=format&fit=crop&w=1200&q=80
+image: https://images.unsplash.com/photo-1556742111-a301076d9d18?auto=format&fit=crop&w=1200&q=80
 related:
   - 三井住友カード NL 評判
   - 学生 クレジットカード 審査
