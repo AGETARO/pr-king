@@ -3,6 +3,7 @@ import Link from 'next/link';
 import {
   SITE_NAME,
   OPERATOR_NAME,
+  CONTACT_NAME,
   CONTACT_EMAIL,
   CONTACT_FORM_URL,
   POLICY_ENACTED,
@@ -17,7 +18,6 @@ export const metadata = {
 
 export default function PrivacyPage() {
   const operator = OPERATOR_NAME || `${SITE_NAME}運営者`;
-  const hasContact = Boolean(CONTACT_EMAIL || CONTACT_FORM_URL);
 
   return (
     <div className="gizmodo-main-container">
@@ -111,18 +111,15 @@ export default function PrivacyPage() {
           <h2>10. お問い合わせ</h2>
           <p>本ポリシーに関するお問い合わせは、次の窓口までお願いします。</p>
           <p>
-            {hasContact ? (
+            <span>{CONTACT_NAME}</span>
+            {CONTACT_EMAIL && (<><br /><span>{CONTACT_EMAIL}</span></>)}
+            {CONTACT_FORM_URL && (
               <>
-                {CONTACT_EMAIL && <span>{CONTACT_EMAIL}</span>}
-                {CONTACT_EMAIL && CONTACT_FORM_URL && <br />}
-                {CONTACT_FORM_URL && (
-                  <a href={CONTACT_FORM_URL} target="_blank" rel="noopener noreferrer">
-                    お問い合わせフォーム
-                  </a>
-                )}
+                <br />
+                <a href={CONTACT_FORM_URL} target="_blank" rel="noopener noreferrer">
+                  お問い合わせフォーム
+                </a>
               </>
-            ) : (
-              'お問い合わせ窓口は現在準備中です。'
             )}
           </p>
 
