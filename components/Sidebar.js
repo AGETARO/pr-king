@@ -54,7 +54,7 @@ export default function Sidebar({ clusters = [], pickupPosts = [], currentSlug =
       </div>
 
       {/* 1-2. アフィリエイトバナー（もしもアフィリエイト） */}
-      <PromoBanner />
+      <PromoBanner id="seminar" />
 
       {/* 2. 検索バー（記事一覧ページのキーワード検索へ） */}
       <form onSubmit={handleSearchSubmit} className="gizmodo-search-bar" role="search">
@@ -131,6 +131,9 @@ export default function Sidebar({ clusters = [], pickupPosts = [], currentSlug =
           ))}
         </ul>
       </div>
+
+      {/* 6. アフィリエイトバナー（300x250） */}
+      <PromoBanner id="rect" />
     </aside>
   );
 }
