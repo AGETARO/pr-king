@@ -2,6 +2,7 @@
 // components/Sidebar.js - 右サイドバー
 import React, { useState } from 'react';
 import Link from 'next/link';
+import PromoBanner from './PromoBanner';
 
 // 注目記事のサムネイル（記事にアイキャッチがない場合のフォールバック）
 const FALLBACK_THUMBNAILS = [
@@ -51,6 +52,9 @@ export default function Sidebar({ clusters = [], pickupPosts = [], currentSlug =
           </div>
         </a>
       </div>
+
+      {/* 1-2. アフィリエイトバナー（もしもアフィリエイト） */}
+      <PromoBanner />
 
       {/* 2. 検索バー（記事一覧ページのキーワード検索へ） */}
       <form onSubmit={handleSearchSubmit} className="gizmodo-search-bar" role="search">
