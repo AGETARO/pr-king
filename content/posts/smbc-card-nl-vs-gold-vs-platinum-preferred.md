@@ -11,8 +11,7 @@ eyecatch: https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&
 image: https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&w=1200&q=80
 related:
   - recommended-credit-cards-ranking
-  - credit-card-student-recommend
-  - creditcard-student-rakuten-vs-smcc
+  - credit-card-student-guide
 affiliate_ids:
   - card-001
   - card-smbc-gold

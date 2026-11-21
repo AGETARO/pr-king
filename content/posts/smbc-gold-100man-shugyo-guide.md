@@ -12,7 +12,7 @@ image: https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit
 related:
   - smbc-card-nl-vs-gold-vs-platinum-preferred
   - recommended-credit-cards-ranking
-  - credit-card-student-recommend
+  - credit-card-student-guide
 affiliate_ids:
   - card-smbc-gold
   - card-001

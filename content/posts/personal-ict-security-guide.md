@@ -11,7 +11,7 @@ eyecatch: https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=form
 image: https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=1200&q=80
 related:
   - how-to-become-white-hat-hacker-for-kids
-  - creditcard-student-rakuten-vs-smcc
+  - credit-card-security-guide
 affiliate_ids: []
 updated: '2026-11-09'
 ---
