@@ -1,6 +1,6 @@
 // app/about/page.js - 運営者情報・編集方針
 import Link from 'next/link';
-import { SITE_NAME, OPERATOR_NAME, CONTACT_EMAIL, CONTACT_FORM_URL } from '../../lib/site';
+import { SITE_NAME, OPERATOR_NAME, CONTACT_NAME, CONTACT_EMAIL, CONTACT_FORM_URL } from '../../lib/site';
 
 export const metadata = {
   title: 'PR-KINGについて（運営者情報・編集方針）',
@@ -9,7 +9,6 @@ export const metadata = {
 };
 
 export default function AboutPage() {
-  const hasContact = Boolean(CONTACT_EMAIL || CONTACT_FORM_URL);
 
   return (
     <div className="gizmodo-main-container">
@@ -38,23 +37,20 @@ export default function AboutPage() {
               </tr>
               <tr>
                 <th>運営者</th>
-                <td>{OPERATOR_NAME || '準備中'}</td>
+                <td>{OPERATOR_NAME}</td>
               </tr>
               <tr>
                 <th>お問い合わせ</th>
                 <td>
-                  {hasContact ? (
+                  <span>{CONTACT_NAME}</span>
+                  {CONTACT_EMAIL && (<><br /><span>{CONTACT_EMAIL}</span></>)}
+                  {CONTACT_FORM_URL && (
                     <>
-                      {CONTACT_EMAIL && <span>{CONTACT_EMAIL}</span>}
-                      {CONTACT_EMAIL && CONTACT_FORM_URL && <br />}
-                      {CONTACT_FORM_URL && (
-                        <a href={CONTACT_FORM_URL} target="_blank" rel="noopener noreferrer">
-                          お問い合わせフォーム
-                        </a>
-                      )}
+                      <br />
+                      <a href={CONTACT_FORM_URL} target="_blank" rel="noopener noreferrer">
+                        お問い合わせフォーム
+                      </a>
                     </>
-                  ) : (
-                    'お問い合わせ窓口は現在準備中です。'
                   )}
                 </td>
               </tr>
