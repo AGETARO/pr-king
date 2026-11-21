@@ -3,6 +3,7 @@ import { getAllPostSlugs, getPostWithHtml, getRelatedPosts, getClusters, getPick
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import ShareButtons from '../../../components/ShareButtons';
+import PromoBanner from '../../../components/PromoBanner';
 import ArticleEyecatch from '../../../components/ArticleEyecatch';
 import Sidebar from '../../../components/Sidebar';
 
@@ -121,6 +122,9 @@ export default async function PostPage({ params }) {
               className="gizmodo-post-body"
               dangerouslySetInnerHTML={{ __html: post.contentHtml }}
             />
+
+            {/* 記事末尾の広告バナー（728x90） */}
+            <PromoBanner id="wideA" wide />
 
             {/* 記事末尾のシェアエリア */}
             <div className="gizmodo-bottom-share">

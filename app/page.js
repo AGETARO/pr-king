@@ -1,6 +1,7 @@
 // site/app/page.js - ギズモード・ジャパン風トップページ
 import Link from 'next/link';
 import { getAllPosts, getClusters, getPickupPosts } from '../lib/posts';
+import PromoBanner from '../components/PromoBanner';
 import Sidebar from '../components/Sidebar';
 
 export const metadata = {
@@ -163,6 +164,9 @@ export default function HomePage() {
               )}
             </div>
           </section>
+
+          {/* 3-2. 広告バナー（468x60） */}
+          <PromoBanner id="wideB" wide />
 
           {/* 4. 最新記事フィード (残りの記事一覧も写真付きで展開) */}
           {remainingPosts.length > 0 && (
