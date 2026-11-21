@@ -9,7 +9,7 @@ export default function ArticleEyecatch({ title, category, cluster, imageUrl }) 
       <div className="gizmodo-eyecatch-image-box">
         <img
           src={finalImage}
-          alt={title}
+          alt=""
           className="gizmodo-eyecatch-img"
           loading="eager"
         />
@@ -19,7 +19,7 @@ export default function ArticleEyecatch({ title, category, cluster, imageUrl }) 
       </div>
       <figcaption className="gizmodo-eyecatch-caption">
         <span className="caption-text">{title}</span>
-        <span className="caption-credit">Photo: Unsplash / PR-KING</span>
+        <span className="caption-credit">Photo: Unsplash（イメージ画像）</span>
       </figcaption>
     </figure>
   );

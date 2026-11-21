@@ -18,7 +18,7 @@ export const metadata = {
     siteName: SITE_NAME,
   },
   robots: { index: true, follow: true },
-  alternates: { canonical: SITE_URL },
+  // canonical は各ページで指定する（ルートで固定すると全ページがトップを指してしまうため）
   verification: {
     google: 'google6d7c871c5aeaffe7',
   },
@@ -69,15 +69,12 @@ export default function RootLayout({ children }) {
 
             {/* 右側: カプセル型ピルボタン群 (MENU, ···, SNS) */}
             <div className="header-right">
-              <button type="button" className="header-pill-btn" aria-label="メニュー">
-                MENU
-              </button>
-              <button type="button" className="header-pill-btn dot-btn" aria-label="その他のリンク">
-                ···
-              </button>
-              <button type="button" className="header-pill-btn sns-btn" aria-label="ソーシャルメディア">
-                SNS 🌐
-              </button>
+              <Link href="/posts/" className="header-pill-btn">
+                ALL POSTS
+              </Link>
+              <Link href="/about/" className="header-pill-btn">
+                ABOUT
+              </Link>
             </div>
           </div>
         </header>
@@ -94,9 +91,9 @@ export default function RootLayout({ children }) {
               </Link>
               <nav className="footer-nav">
                 <Link href="/">HOME</Link>
-                <Link href="/posts">ALL POSTS</Link>
-                <Link href="/privacy">PRIVACY</Link>
-                <Link href="/about">ABOUT</Link>
+                <Link href="/posts/">ALL POSTS</Link>
+                <Link href="/privacy/">PRIVACY</Link>
+                <Link href="/about/">ABOUT</Link>
               </nav>
             </div>
             <div className="footer-bottom">

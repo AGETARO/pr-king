@@ -1,17 +1,18 @@
 // site/app/page.js - ギズモード・ジャパン風トップページ
 import Link from 'next/link';
-import { getAllPosts, getClusters, getPopularPosts } from '../lib/posts';
+import { getAllPosts, getClusters, getPickupPosts } from '../lib/posts';
 import Sidebar from '../components/Sidebar';
 
 export const metadata = {
   title: 'PR-KING | デジタル決済・ガジェット・ライフスタイル最新メディア',
   description: '最新のトレンド、クレジットカード、サブスク、デジタルガジェットをシャープに切り取るテックマガジン',
+  alternates: { canonical: '/' },
 };
 
 export default function HomePage() {
   const posts = getAllPosts();
   const clusters = getClusters();
-  const popularPosts = getPopularPosts(5);
+  const pickupPosts = getPickupPosts(5);
 
   // 添付画像 (Gizmodo) のレイアウト構成に記事を割り振る
   const leadPost = posts[0] || null;
@@ -32,7 +33,7 @@ export default function HomePage() {
           {leadPost && (
             <article className="gizmodo-lead-article">
               <div className="lead-meta-header">
-                <time className="lead-timestamp">{leadPost.formattedDate || 'Nov 8, 2026 23:00'}</time>
+                <time className="lead-timestamp" dateTime={leadPost.updated}>{leadPost.formattedDate}</time>
                 <span className="lead-category-pill">{leadPost.cluster || leadPost.category}</span>
               </div>
               <h1 className="lead-headline">
@@ -59,7 +60,8 @@ export default function HomePage() {
               {subPost1 && (
                 <article className="sub-grid-card">
                   <div className="sub-card-meta">
-                    <span className="sub-pr-badge">PR [三井住友カード]</span>
+                    {subPost1.hasPromo && <span className="sub-pr-badge">PR</span>}
+                    <time className="sub-timestamp" dateTime={subPost1.updated}>{subPost1.formattedDate}</time>
                   </div>
                   <h3 className="sub-card-title">
                     <Link href={`/posts/${subPost1.slug}/`}>
@@ -82,7 +84,8 @@ export default function HomePage() {
               {subPost2 && (
                 <article className="sub-grid-card">
                   <div className="sub-card-meta">
-                    <time className="sub-timestamp">{subPost2.formattedDate || 'Nov 8, 2026 22:30'}</time>
+                    {subPost2.hasPromo && <span className="sub-pr-badge">PR</span>}
+                    <time className="sub-timestamp" dateTime={subPost2.updated}>{subPost2.formattedDate}</time>
                   </div>
                   <h3 className="sub-card-title">
                     <Link href={`/posts/${subPost2.slug}/`}>
@@ -114,10 +117,8 @@ export default function HomePage() {
               {featurePost1 && (
                 <article className="feature-row-article">
                   <div className="feature-row-meta">
-                    <time className="feature-date">{featurePost1.formattedDate}</time>
-                    <span className="feature-views-pill">
-                      👁️ {featurePost1.views}
-                    </span>
+                    {featurePost1.hasPromo && <span className="sub-pr-badge">PR</span>}
+                    <time className="feature-date" dateTime={featurePost1.updated}>{featurePost1.formattedDate}</time>
                   </div>
                   <h3 className="feature-row-title">
                     <Link href={`/posts/${featurePost1.slug}/`}>
@@ -140,8 +141,8 @@ export default function HomePage() {
               {featurePost2 && (
                 <article className="feature-row-article">
                   <div className="feature-row-meta">
-                    <span className="sub-pr-badge">PR [ライフスタイル]</span>
-                    <time className="feature-date">{featurePost2.formattedDate}</time>
+                    {featurePost2.hasPromo && <span className="sub-pr-badge">PR</span>}
+                    <time className="feature-date" dateTime={featurePost2.updated}>{featurePost2.formattedDate}</time>
                   </div>
                   <h3 className="feature-row-title">
                     <Link href={`/posts/${featurePost2.slug}/`}>
@@ -185,7 +186,7 @@ export default function HomePage() {
                     <div className="latest-card-body">
                       <div className="latest-card-meta">
                         <span className="latest-category">{post.cluster || post.category}</span>
-                        <time className="latest-date">{post.formattedDate}</time>
+                        <time className="latest-date" dateTime={post.updated}>{post.formattedDate}</time>
                       </div>
                       <h4 className="latest-card-title">
                         <Link href={`/posts/${post.slug}/`}>
@@ -208,7 +209,7 @@ export default function HomePage() {
             ==================================================== */}
         <Sidebar
           clusters={clusters}
-          popularPosts={popularPosts}
+          pickupPosts={pickupPosts}
         />
       </div>
     </div>

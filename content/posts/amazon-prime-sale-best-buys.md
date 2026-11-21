@@ -29,13 +29,13 @@ updated: '2026-11-17'
 
 Amazonセールで真に得をするには、**「割引率が極めて高い鉄板カテゴリー」に絞って買い物をすること**、そして**「ポイント還元を最大化する仕込み」を完了しておくこと**が必須です。
 
-本記事では、毎回のAmazonセールをくまなくチェックしているガジェット＆生活情報ブロガーが、**「絶対にカートに入れるべきおすすめ目玉商品」**と**「還元率を最大化する3つの攻略テクニック」**を余すところなく解説します。
+本記事では、Amazonセールで**狙い目になりやすい商品カテゴリー**と、**「還元率を最大化する3つの攻略テクニック」**を解説します。
 
 <div class="affiliate-card">
-  <div style="font-size: 0.78rem; font-weight: 800; color: #ff5722; margin-bottom: 0.5rem;">[PR] Amazon大型セール リアルタイム開催中！</div>
+  <div style="font-size: 0.78rem; font-weight: 800; color: #ff5722; margin-bottom: 0.5rem;">[PR] Amazonセール情報（開催状況は公式ページでご確認ください）</div>
   <h3 style="font-size: 1.25rem; font-weight: 900; margin-bottom: 0.75rem;">Amazon プライムセール特設会場</h3>
   <p style="font-size: 0.9rem; color: #555; margin-bottom: 1.25rem;">
-    最大50%OFFの目玉商品が勢揃い！ポイントアップキャンペーンのエントリーはこちら。
+    セールの開催期間・対象商品・ポイントアップの条件は、Amazon公式ページでご確認ください。
   </p>
   <a href="https://www.amazon.co.jp/" target="_blank" rel="noopener noreferrer nofollow" class="btn-cta">
     Amazonセール特設会場をチェックする（公式） →
@@ -103,10 +103,10 @@ Amazonセールで最も値引き率が大きく、**定価で買うと損をす
 - **おむつ・おしりふき**: 子育て世帯はポイント還元と合わせて数千円単位で浮きます。
 
 <div class="affiliate-card">
-  <div style="font-size: 0.78rem; font-weight: 800; color: #ff5722; margin-bottom: 0.5rem;">[PR] タイムセール対象商品をリアルタイム更新中！</div>
+  <div style="font-size: 0.78rem; font-weight: 800; color: #ff5722; margin-bottom: 0.5rem;">[PR] Amazonセール情報</div>
   <h3 style="font-size: 1.25rem; font-weight: 900; margin-bottom: 0.75rem;">Amazon プライムセール会場はこちら</h3>
   <p style="font-size: 0.9rem; color: #555; margin-bottom: 1.25rem;">
-    人気ガジェットから日用品・食品まで、今だけの限定特価をお見逃しなく！
+    対象商品や価格は時期によって変わります。最新情報は公式ページでご確認ください。
   </p>
   <a href="https://www.amazon.co.jp/" target="_blank" rel="noopener noreferrer nofollow" class="btn-cta">
     Amazonセール特設会場へ行く（公式リンク） →
