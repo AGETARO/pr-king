@@ -2,7 +2,8 @@
 import { useState, useEffect } from 'react';
 
 export default function HeaderClock() {
-  const [timeStr, setTimeStr] = useState('23:10:29 JST');
+  // 初期表示は固定の偽時刻ではなく、取得できるまで空欄にする
+  const [timeStr, setTimeStr] = useState('--:--:-- JST');
 
   useEffect(() => {
     function updateClock() {

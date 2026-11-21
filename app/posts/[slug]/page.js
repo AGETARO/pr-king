@@ -1,5 +1,5 @@
 // site/app/posts/[slug]/page.js - ギズモード風 記事詳細ページ
-import { getAllPostSlugs, getPostWithHtml, getRelatedPosts, getClusters, getPopularPosts } from '../../../lib/posts';
+import { getAllPostSlugs, getPostWithHtml, getRelatedPosts, getClusters, getPickupPosts } from '../../../lib/posts';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import ShareButtons from '../../../components/ShareButtons';
@@ -23,7 +23,7 @@ export async function generateMetadata({ params }) {
         title: post.title,
         description: post.description,
         type: 'article',
-        publishedTime: post.updated,
+        modifiedTime: `${post.updated}T00:00:00+09:00`,
         images: [{ url: post.eyecatch || post.image }],
       },
       alternates: {
@@ -45,7 +45,7 @@ export default async function PostPage({ params }) {
 
   const relatedPosts = getRelatedPosts(post, 4);
   const clusters = getClusters();
-  const popularPosts = getPopularPosts(5);
+  const pickupPosts = getPickupPosts(5);
 
   // 構造化データ (Article)
   const structuredData = {
@@ -54,7 +54,7 @@ export default async function PostPage({ params }) {
     headline: post.title,
     description: post.description,
     image: post.eyecatch || post.image,
-    dateModified: post.updated,
+    dateModified: `${post.updated}T00:00:00+09:00`,
     author: { '@type': 'Organization', name: process.env.SITE_NAME || 'PR-KING' },
     publisher: {
       '@type': 'Organization',
@@ -76,7 +76,7 @@ export default async function PostPage({ params }) {
           <span className="sep">/</span>
           {post.cluster && (
             <>
-              <Link href={`/?cluster=${encodeURIComponent(post.cluster)}`}>{post.cluster}</Link>
+              <Link href={`/posts/?cluster=${encodeURIComponent(post.cluster)}`}>{post.cluster}</Link>
               <span className="sep">/</span>
             </>
           )}
@@ -88,21 +88,22 @@ export default async function PostPage({ params }) {
           <article className="gizmodo-article-container">
             {/* 記事メタヘッダー */}
             <div className="article-entry-meta">
-              <time className="article-entry-date">{post.formattedDate || post.updated}</time>
+              <time className="article-entry-date" dateTime={post.updated}>{post.formattedDate} 更新</time>
               <div className="article-meta-tags">
                 <span className="article-cluster-pill">{post.cluster || post.category}</span>
-                <span className="article-pr-notice">PR</span>
+                {post.hasPromo && <span className="article-pr-notice">PR</span>}
               </div>
             </div>
 
             {/* 記事メインタイトル */}
             <h1 className="gizmodo-post-title">{post.title}</h1>
 
-            {/* 閲覧数 & ひっそりと配置された9ptのPR注記 */}
-            <div className="gizmodo-post-sub-bar">
-              <span className="post-view-count">👁️ {post.views} views</span>
-              <span className="post-discrete-pr-note">※本記事にはアフィリエイト・プロモーション広告が含まれます</span>
-            </div>
+            {/* 広告表記（記事の冒頭に表示） */}
+            {post.hasPromo && (
+              <div className="gizmodo-post-sub-bar">
+                <span className="post-discrete-pr-note">【PR】本記事にはアフィリエイト・プロモーション広告が含まれます</span>
+              </div>
+            )}
 
             {/* 上部 SNSシェアボタン */}
             <ShareButtons title={post.title} slug={post.slug} />
@@ -153,7 +154,7 @@ export default async function PostPage({ params }) {
                             {rp.title}
                           </Link>
                         </h4>
-                        <time className="related-date">{rp.formattedDate}</time>
+                        <time className="related-date" dateTime={rp.updated}>{rp.formattedDate}</time>
                       </div>
                     </article>
                   ))}
@@ -165,7 +166,7 @@ export default async function PostPage({ params }) {
           {/* 右サイドバー */}
           <Sidebar
             clusters={clusters}
-            popularPosts={popularPosts}
+            pickupPosts={pickupPosts}
             currentSlug={post.slug}
           />
         </div>
