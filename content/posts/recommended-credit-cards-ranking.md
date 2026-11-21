@@ -10,7 +10,7 @@ article_type: ranking
 eyecatch: https://images.unsplash.com/photo-1556742044-3c52d6e88c62?auto=format&fit=crop&w=1200&q=80
 image: https://images.unsplash.com/photo-1556742044-3c52d6e88c62?auto=format&fit=crop&w=1200&q=80
 related:
-  - credit-card-student-recommend
+  - credit-card-student-guide
   - inflation-survival-saving-tips
 affiliate_ids:
   - card-001
