@@ -28,30 +28,9 @@ export default function Sidebar({ clusters = [], pickupPosts = [], currentSlug =
 
   return (
     <aside className="gizmodo-sidebar">
-      {/* 1. 広告枠（PR） */}
-      <div className="gizmodo-ad-box">
-        <span className="ad-corner-tag">AD</span>
-        <a
-          href="https://www.smbc-card.com/"
-          target="_blank"
-          rel="sponsored nofollow noopener noreferrer"
-          className="gizmodo-ad-link"
-        >
-          <div className="ad-text-col">
-            <span className="ad-title-label">【PR】</span>
-            <span className="ad-product-name">三井住友カード(NL)</span>
-            <span className="ad-badge-pill">対象店舗で最大7%還元（条件あり）</span>
-            <span className="ad-prime-mark">✓ 年会費 永年無料</span>
-          </div>
-          <div className="ad-image-col">
-            <img
-              src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=200&h=180&q=80"
-              alt=""
-              className="ad-thumb-img"
-            />
-          </div>
-        </a>
-      </div>
+      {/* 1. アフィリエイトバナー（もしもアフィリエイト） */}
+      <PromoBanner id="rectB" />
+      <PromoBanner id="wideC" />
 
       {/* 1-2. アフィリエイトバナー（もしもアフィリエイト） */}
       <PromoBanner id="seminar" />
