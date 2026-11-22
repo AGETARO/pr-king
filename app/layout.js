@@ -17,7 +17,12 @@ export const metadata = {
     locale: 'ja_JP',
     siteName: SITE_NAME,
   },
-  robots: { index: true, follow: true },
+  robots: {
+    index: true,
+    follow: true,
+    // Google Discover・画像検索で大きなサムネイルを表示させる
+    googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1, 'max-video-preview': -1 },
+  },
   // canonical は各ページで指定する（ルートで固定すると全ページがトップを指してしまうため）
   verification: {
     google: 'google6d7c871c5aeaffe7',

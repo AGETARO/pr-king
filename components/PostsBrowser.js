@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 
 // 絞り込み条件を受け取って一覧を表示する（サーバー側の初期表示と、クライアント側の絞り込みで共用）
-export function PostsView({ posts, q = '', cluster = '' }) {
+export function PostsView({ posts, q = '', cluster = '', hideHeader = false }) {
   const needle = q.toLowerCase();
   const filtered = posts.filter((p) => {
     if (cluster && p.cluster !== cluster) return false;
@@ -19,7 +19,7 @@ export function PostsView({ posts, q = '', cluster = '' }) {
 
   return (
     <>
-      <div className="feature-header-bar">
+      {!hideHeader && <div className="feature-header-bar">
         <h1 className="feature-big-title">All Stories</h1>
         <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', marginTop: '0.5rem' }}>
           {isFiltered
@@ -32,7 +32,7 @@ export function PostsView({ posts, q = '', cluster = '' }) {
             </>
           )}
         </p>
-      </div>
+      </div>}
 
       {filtered.length === 0 ? (
         <p style={{ padding: '2rem 0' }}>該当する記事が見つかりませんでした。別のキーワードをお試しください。</p>

@@ -161,6 +161,11 @@ updated: '2026-11-19'
 
 ---
 
+> **あわせて読みたい**
+> - [三井住友カード ゴールド（NL）100万円修行のやり方](/posts/smbc-gold-100man-shugyo-guide/)
+> - [新NISAクレカ積立の比較（SBI・楽天・マネックス）](/posts/nisa-creca-tsumitate-comparison-2026/)
+> - [JCB CARD Wと三井住友カード（NL）はどっちがお得？](/posts/jcb-card-w-vs-smbc-card-nl/)
+
 ## 6. まとめ：あなたに最適なカードはどれ？診断チャート
 
 最後に、あなたが選ぶべきカードの結論を整理します。

@@ -107,6 +107,10 @@ updated: '2026-11-21'
 
 カードを比べる具体例は、[年会費無料クレジットカードの比較](/posts/free-annual-fee-credit-card-comparison/)で紹介しています。
 
+> **あわせて読みたい**
+> - [年会費無料クレジットカードの比較](/posts/free-annual-fee-credit-card-comparison/)
+> - [クレジットカードのおすすめ4選](/posts/recommended-credit-cards-ranking/)
+
 ## まとめ
 
 - 還元率は「ポイント × 1ポイントの価値 ÷ 利用金額」で求める

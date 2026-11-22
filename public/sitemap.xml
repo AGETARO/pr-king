@@ -13,6 +13,36 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://lifetime.pr-king.workers.dev/category/smbc/</loc>
+    <lastmod>2026-11-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://lifetime.pr-king.workers.dev/category/credit-card/</loc>
+    <lastmod>2026-11-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://lifetime.pr-king.workers.dev/category/nisa/</loc>
+    <lastmod>2026-11-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://lifetime.pr-king.workers.dev/category/saving/</loc>
+    <lastmod>2026-11-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://lifetime.pr-king.workers.dev/category/security/</loc>
+    <lastmod>2026-11-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://lifetime.pr-king.workers.dev/about/</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>

@@ -1,5 +1,7 @@
 // site/app/posts/[slug]/page.js - ギズモード風 記事詳細ページ
-import { getAllPostSlugs, getPostWithHtml, getRelatedPosts, getClusters, getPickupPosts } from '../../../lib/posts';
+import { getAllPostSlugs, getPostWithHtml, getRelatedPosts, getHubs, getPickupPosts } from '../../../lib/posts';
+import { getHubBySlug, hubPath } from '../../../lib/hubs';
+import { SITE_NAME, SITE_URL } from '../../../lib/site';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import ShareButtons from '../../../components/ShareButtons';
@@ -24,6 +26,7 @@ export async function generateMetadata({ params }) {
         title: post.title,
         description: post.description,
         type: 'article',
+        publishedTime: `${post.published}T00:00:00+09:00`,
         modifiedTime: `${post.updated}T00:00:00+09:00`,
         images: [{ url: post.eyecatch || post.image }],
       },
@@ -45,23 +48,39 @@ export default async function PostPage({ params }) {
   }
 
   const relatedPosts = getRelatedPosts(post, 4);
-  const clusters = getClusters();
+  const clusters = getHubs();
   const pickupPosts = getPickupPosts(5);
+  const hub = getHubBySlug(post.hubSlug);
 
-  // 構造化データ (Article)
-  const structuredData = {
-    '@context': 'https://schema.org',
-    '@type': 'Article',
-    headline: post.title,
-    description: post.description,
-    image: post.eyecatch || post.image,
-    dateModified: `${post.updated}T00:00:00+09:00`,
-    author: { '@type': 'Organization', name: process.env.SITE_NAME || 'PR-KING' },
-    publisher: {
-      '@type': 'Organization',
-      name: process.env.SITE_NAME || 'PR-KING',
+  // 構造化データ (Article + BreadcrumbList)
+  const base = SITE_URL.replace(/\/$/, '');
+  const url = `${base}/posts/${post.slug}/`;
+  const org = { '@type': 'Organization', name: SITE_NAME, url: `${base}/about/` };
+  const crumbs = [
+    { name: 'TOP', item: `${base}/` },
+    ...(hub ? [{ name: hub.name, item: `${base}${hubPath(hub)}` }] : []),
+    { name: post.title, item: url },
+  ];
+  const structuredData = [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'Article',
+      headline: post.title,
+      description: post.description,
+      image: post.eyecatch || post.image,
+      datePublished: `${post.published}T00:00:00+09:00`,
+      dateModified: `${post.updated}T00:00:00+09:00`,
+      mainEntityOfPage: { '@type': 'WebPage', '@id': url },
+      author: org,
+      publisher: org,
+      ...(hub ? { articleSection: hub.name } : {}),
     },
-  };
+    {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: crumbs.map((c, i) => ({ '@type': 'ListItem', position: i + 1, ...c })),
+    },
+  ];
 
   return (
     <>
@@ -75,9 +94,9 @@ export default async function PostPage({ params }) {
         <nav className="gizmodo-breadcrumbs" aria-label="パンくずリスト">
           <Link href="/">TOP</Link>
           <span className="sep">/</span>
-          {post.cluster && (
+          {hub && (
             <>
-              <Link href={`/posts/?cluster=${encodeURIComponent(post.cluster)}`}>{post.cluster}</Link>
+              <Link href={hubPath(hub)}>{hub.name}</Link>
               <span className="sep">/</span>
             </>
           )}

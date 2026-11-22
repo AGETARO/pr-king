@@ -1,6 +1,6 @@
 // site/app/page.js - ギズモード・ジャパン風トップページ
 import Link from 'next/link';
-import { getAllPosts, getClusters, getPickupPosts } from '../lib/posts';
+import { getAllPosts, getHubs, getPickupPosts } from '../lib/posts';
 import PromoBanner from '../components/PromoBanner';
 import Sidebar from '../components/Sidebar';
 
@@ -12,7 +12,7 @@ export const metadata = {
 
 export default function HomePage() {
   const posts = getAllPosts();
-  const clusters = getClusters();
+  const clusters = getHubs();
   const pickupPosts = getPickupPosts(5);
 
   // 添付画像 (Gizmodo) のレイアウト構成に記事を割り振る

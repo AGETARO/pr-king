@@ -2,6 +2,7 @@
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
+import { HUBS } from '../lib/hubs.js';
 
 const SITE_URL = (process.env.SITE_URL || 'https://lifetime.pr-king.workers.dev').replace(/\/$/, '');
 const postsDir = path.join(process.cwd(), 'content/posts');
@@ -17,7 +18,10 @@ const posts = fs.readdirSync(postsDir)
   .filter((f) => f.endsWith('.md') && !f.includes('.quality') && !f.includes('.backup'))
   .map((f) => {
     const { data } = matter(fs.readFileSync(path.join(postsDir, f), 'utf8'));
-    return { slug: data.slug || f.replace(/\.md$/, ''), updated: toDate(data.updated) };
+    const hub = data.hub
+      ? HUBS.find((h) => h.slug === data.hub)
+      : HUBS.find((h) => h.clusters.includes(data.cluster));
+    return { slug: data.slug || f.replace(/\.md$/, ''), updated: toDate(data.updated), hub: hub ? hub.slug : '' };
   })
   .sort((a, b) => a.slug.localeCompare(b.slug));
 
@@ -29,6 +33,11 @@ const entry = (loc, lastmod, freq, prio) =>
 const urls = [
   entry(`${SITE_URL}/`, latest, 'daily', '1.0'),
   entry(`${SITE_URL}/posts/`, latest, 'daily', '0.8'),
+  // カテゴリハブ（記事があるものだけ。lastmod は所属記事の最新更新日）
+  ...HUBS.map((h) => {
+    const d = posts.filter((p) => p.hub === h.slug).map((p) => p.updated).filter(Boolean).sort().pop();
+    return d ? entry(`${SITE_URL}/category/${h.slug}/`, d, 'weekly', '0.7') : null;
+  }).filter(Boolean),
   entry(`${SITE_URL}/about/`, '', 'yearly', '0.3'),
   entry(`${SITE_URL}/privacy/`, '', 'yearly', '0.3'),
   ...posts.map((p) => entry(`${SITE_URL}/posts/${p.slug}/`, p.updated, 'weekly', '0.8')),

@@ -102,7 +102,7 @@ export default function Sidebar({ clusters = [], pickupPosts = [], currentSlug =
         <ul className="gizmodo-cat-list">
           {clusters.map((c) => (
             <li key={c.name} className="cat-row">
-              <Link href={`/posts/?cluster=${encodeURIComponent(c.name)}`} className="cat-row-link">
+              <Link href={c.slug ? `/category/${c.slug}/` : `/posts/?cluster=${encodeURIComponent(c.name)}`} className="cat-row-link">
                 <span>{c.name}</span>
                 <span className="cat-badge">{c.count}</span>
               </Link>

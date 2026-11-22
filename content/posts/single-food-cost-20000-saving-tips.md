@@ -109,6 +109,11 @@ flowchart LR
 
 ---
 
+> **あわせて読みたい**
+> - [物価高の節約術｜固定費から見直す家計の整え方](/posts/inflation-survival-saving-tips/)
+> - [ポイント還元率の計算方法](/posts/credit-card-point-rate-calculation/)
+> - [年会費無料クレジットカードの比較](/posts/free-annual-fee-credit-card-comparison/)
+
 ## 5. まとめ：賢く食べて、無理なく資産を守ろう
 
 食費の節約は「我慢の連続」ではなく、**「買い出しのルール化」と「決済の最適化」**です。

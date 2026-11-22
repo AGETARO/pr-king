@@ -95,6 +95,11 @@ flowchart TD
 
 ---
 
+> **あわせて読みたい**
+> - [三井住友カード（NL）・ゴールド・プラチナプリファードの比較](/posts/smbc-card-nl-vs-gold-vs-platinum-preferred/)
+> - [三井住友カード ゴールド（NL）100万円修行のやり方](/posts/smbc-gold-100man-shugyo-guide/)
+> - [子ども名義のNISAと大学資金づくり](/posts/junior-nisa-kids-investment-guide/)
+
 ## 4. 結論：新NISAクレカ積立の最適解
 
 * **迷ったら総合力No.1**: **SBI証券 ＋ 三井住友カード ゴールド（NL）**

@@ -4,7 +4,7 @@ description: "PR-KINGは、クレジットカード・NISA・節約など「お�
 slug: "welcome"
 category: "お知らせ"
 cluster: "導入"
-keyword: "クレジットカード 比較 おすすめ"
+keyword: "PR-KING とは"
 article_type: "用語解説"
 eyecatch: "https://images.unsplash.com/photo-1556742044-3c52d6e88c62?auto=format&fit=crop&w=1200&q=80"
 image: "https://images.unsplash.com/photo-1556742044-3c52d6e88c62?auto=format&fit=crop&w=1200&q=80"

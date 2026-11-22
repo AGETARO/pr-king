@@ -1,7 +1,7 @@
 // app/posts/page.js - 記事一覧ページ
 import { Suspense } from 'react';
 import Link from 'next/link';
-import { getAllPosts, getClusters, getPickupPosts } from '../../lib/posts';
+import { getAllPosts, getHubs, getPickupPosts } from '../../lib/posts';
 import Sidebar from '../../components/Sidebar';
 import PostsBrowser, { PostsView } from '../../components/PostsBrowser';
 
@@ -22,7 +22,7 @@ export default function PostsPage() {
     updated: p.updated,
     formattedDate: p.formattedDate,
   }));
-  const clusters = getClusters();
+  const clusters = getHubs();
   const pickupPosts = getPickupPosts(5);
 
   return (

@@ -128,6 +128,11 @@ flowchart LR
 
 ---
 
+> **あわせて読みたい**
+> - [三井住友カード（NL）・ゴールド・プラチナプリファードの比較](/posts/smbc-card-nl-vs-gold-vs-platinum-preferred/)
+> - [新NISAクレカ積立の比較（SBI・楽天・マネックス）](/posts/nisa-creca-tsumitate-comparison-2026/)
+> - [ポイント還元率の計算方法](/posts/credit-card-point-rate-calculation/)
+
 ## 5. まとめ：ゴールド（NL）は修行してでも持つ価値がある！
 
 三井住友カード ゴールド（NL）は、一度100万円修行を達成してしまえば、**一生涯年会費無料で保有できる最強のステータスカード**です。

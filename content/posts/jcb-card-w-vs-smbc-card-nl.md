@@ -108,6 +108,11 @@ flowchart TD
 
 ---
 
+> **あわせて読みたい**
+> - [三井住友カード（NL）・ゴールド・プラチナプリファードの比較](/posts/smbc-card-nl-vs-gold-vs-platinum-preferred/)
+> - [年会費無料クレジットカードの比較](/posts/free-annual-fee-credit-card-comparison/)
+> - [ポイント還元率の計算方法](/posts/credit-card-point-rate-calculation/)
+
 ## 4. 迷ったときの結論：実は「2枚持ち」が最も賢い！
 
 「Amazonも使うし、コンビニも使う…どうしても決められない！」という方。
