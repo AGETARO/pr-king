@@ -1575,3 +1575,9 @@ img {
   max-width: 100%;
   overflow-x: auto;
 }
+
+/* ASP バナー広告（{{banner:ID}}） */
+.aff-banner { margin: 2rem auto; text-align: center; max-width: 100%; }
+.aff-banner .aff-cta-pr { display: inline-block; margin-bottom: .4rem; }
+.aff-banner a { display: inline-block; line-height: 0; }
+.aff-banner img { max-width: 100%; height: auto; }
