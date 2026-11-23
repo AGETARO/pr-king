@@ -110,43 +110,7 @@ flowchart TD
 
 口座開設もカード発行もすべてオンラインで完結します。新NISAの枠をフル活用して、賢くポイントを二重取りしましょう！
 
-<div class="affiliate-card">
-  <div class="affiliate-card-inner">
-    <div class="affiliate-badge">新NISAクレカ積立で還元率1.0%！</div>
-    <div class="affiliate-content">
-      <div class="affiliate-text">
-        <h4 class="affiliate-title">三井住友カード ゴールド（NL）</h4>
-        <p class="affiliate-desc">SBI証券のクレカ積立で最大1.0%還元！年間100万円利用で年会費永年無料＋10,000pt。新NISAを始めるなら絶対に持っておきたい本命カード。</p>
-        <ul class="affiliate-points">
-          <li><strong>年会費</strong>：5,500円（年100万利用で翌年以降<strong>永年無料</strong>）</li>
-          <li><strong>積立還元率</strong>：最大1.0%（月10万円で年間12,000pt獲得）</li>
-          <li><strong>対象店舗</strong>：セブン・ローソン・マック等でスマホタッチ決済最大7.0%</li>
-        </ul>
-        <div class="affiliate-cta">
-          <a href="https://www.smbc-card.com/" target="_blank" rel="noopener noreferrer nofollow" class="btn btn-primary btn-large">三井住友カード ゴールド（NL）公式サイトへ</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+{{cta:card-smbc-gold}}
 
-<div class="affiliate-card">
-  <div class="affiliate-card-inner">
-    <div class="affiliate-badge">楽天経済圏なら迷わずこれ！</div>
-    <div class="affiliate-content">
-      <div class="affiliate-text">
-        <h4 class="affiliate-title">楽天カード</h4>
-        <p class="affiliate-desc">年会費永年無料。楽天証券での新NISA積立でポイントが貯まり、貯まったポイントは街中の買い物や積立投資にそのまま再投資可能！</p>
-        <ul class="affiliate-points">
-          <li><strong>年会費</strong>：永年無料</li>
-          <li><strong>還元率</strong>：通常1.0% / 楽天市場で最大3.0%以上</li>
-          <li><strong>楽天キャッシュ併用</strong>：月最大15万円までキャッシュレス積立対応</li>
-        </ul>
-        <div class="affiliate-cta">
-          <a href="https://www.rakuten-card.co.jp/" target="_blank" rel="noopener noreferrer nofollow" class="btn btn-primary btn-large">楽天カード 公式サイトへ</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+{{cta:card-003}}
 

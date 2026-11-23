@@ -128,43 +128,7 @@ flowchart TD
 
 まずはあなたの生活に最もフィットする1枚から発行してみてください！
 
-<div class="affiliate-card">
-  <div class="affiliate-card-inner">
-    <div class="affiliate-badge">Amazon・スタバ派ならおすすめ！</div>
-    <div class="affiliate-content">
-      <div class="affiliate-text">
-        <h4 class="affiliate-title">JCB CARD W（18歳〜39歳限定）</h4>
-        <p class="affiliate-desc">年会費永年無料！いつでもポイント2倍（1.0%還元）。Amazonで2.0%、スタバで最大10.5%の超高還元を誇る、30代以下必携の最強メインカード。</p>
-        <ul class="affiliate-points">
-          <li><strong>年会費</strong>：永年無料（※39歳までに申し込めば40歳以降も無料継続）</li>
-          <li><strong>還元率</strong>：通常1.0%（Amazon 2.0% / スタバ最大10.5%）</li>
-          <li><strong>ナンバーレス</strong>：最短5分で即時発行・スマホ決済対応</li>
-        </ul>
-        <div class="affiliate-cta">
-          <a href="https://www.jcb.co.jp/" target="_blank" rel="noopener noreferrer nofollow" class="btn btn-primary btn-large">JCB CARD W 公式サイトへ</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+{{cta:card-002}}
 
-<div class="affiliate-card">
-  <div class="affiliate-card-inner">
-    <div class="affiliate-badge">コンビニ・外食・新NISAならこれ！</div>
-    <div class="affiliate-content">
-      <div class="affiliate-text">
-        <h4 class="affiliate-title">三井住友カード（NL）</h4>
-        <p class="affiliate-desc">年会費永年無料。対象のコンビニ・飲食店でスマホのタッチ決済を使うと最大7.0%還元！SBI証券の新NISAクレカ積立でも大人気の鉄板カード。</p>
-        <ul class="affiliate-points">
-          <li><strong>年会費</strong>：永年無料（全年齢対象）</li>
-          <li><strong>還元率</strong>：通常0.5%（対象コンビニ・飲食店で最大7.0%）</li>
-          <li><strong>セキュリティ</strong>：完全ナンバーレスで安心・最短10秒で即時発行</li>
-        </ul>
-        <div class="affiliate-cta">
-          <a href="https://www.smbc-card.com/" target="_blank" rel="noopener noreferrer nofollow" class="btn btn-primary btn-large">三井住友カード（NL）公式サイトへ</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+{{cta:card-001}}
 

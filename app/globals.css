@@ -1463,3 +1463,115 @@ img {
   font-weight: 700;
   color: var(--text-muted);
 }
+
+/* アフィリエイトCTAカード（{{cta:ID}} / 自動挿入。lib/affiliates.js で生成） */
+.aff-cta {
+  border: 2px solid #000000;
+  border-radius: 6px;
+  background: #ffffff;
+  padding: 1.5rem 1.25rem 1.25rem;
+  margin: 2.5rem 0;
+}
+.aff-cta-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.6rem;
+}
+.aff-cta-pr {
+  font-size: 0.7rem;
+  font-weight: 800;
+  border: 1px solid #555555;
+  color: #555555;
+  border-radius: 3px;
+  padding: 0.05rem 0.4rem;
+}
+.aff-cta-badge {
+  font-size: 0.8rem;
+  font-weight: 800;
+  background: var(--accent-lime);
+  color: #000000;
+  border-radius: 3px;
+  padding: 0.15rem 0.5rem;
+}
+.gizmodo-post-body .aff-cta-name {
+  font-size: 1.25rem;
+  font-weight: 900;
+  margin: 0 0 0.5rem;
+}
+.gizmodo-post-body .aff-cta-desc {
+  font-size: 0.92rem;
+  line-height: 1.75;
+  margin: 0 0 0.9rem;
+}
+.gizmodo-post-body .aff-cta-points {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.25rem;
+  border-top: 1px solid #e5e5e5;
+}
+.gizmodo-post-body .aff-cta-points li {
+  display: flex;
+  gap: 0.75rem;
+  padding: 0.55rem 0;
+  border-bottom: 1px solid #e5e5e5;
+  font-size: 0.88rem;
+  margin: 0;
+}
+.gizmodo-post-body .aff-cta-points li::before {
+  content: none;
+}
+.aff-cta-key {
+  flex: 0 0 4.5rem;
+  font-weight: 800;
+}
+.aff-cta-val {
+  flex: 1;
+  min-width: 0;
+}
+.gizmodo-post-body a.aff-cta-btn {
+  display: block;
+  text-align: center;
+  background: #000000;
+  color: #ffffff !important;
+  font-weight: 900;
+  font-size: 1rem;
+  padding: 0.95rem 1rem;
+  border-radius: 9999px;
+  text-decoration: none;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+.gizmodo-post-body a.aff-cta-btn::after {
+  content: ' →';
+}
+.gizmodo-post-body a.aff-cta-btn:hover {
+  background: var(--accent-lime);
+  color: #000000 !important;
+}
+.gizmodo-post-body .aff-cta-note {
+  font-size: 0.72rem;
+  color: #777777;
+  margin: 0.75rem 0 0;
+  line-height: 1.6;
+}
+
+/* スマホで記事が横にはみ出す不具合の修正:
+   グリッドの子要素は既定で min-width:auto のため、幅の広い表やコードが列ごと押し広げていた。
+   列は画面幅に収め、表とコードはその中で横スクロールさせる。 */
+.gizmodo-layout-grid > * {
+  min-width: 0;
+}
+@media (max-width: 768px) {
+  /* PCでは表を全幅のまま表示し、スマホだけ横スクロールにする */
+  .gizmodo-post-body table {
+    display: block;
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+.gizmodo-post-body pre {
+  max-width: 100%;
+  overflow-x: auto;
+}

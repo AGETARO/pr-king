@@ -124,25 +124,7 @@ flowchart LR
 
 浮いた月2万円を新NISAの積立投資に回せば、10年後には数百万円の大きな資産に化けます。今日からのスーパーの買い出しから、ぜひ実践してみてください！
 
-<div class="affiliate-card">
-  <div class="affiliate-card-inner">
-    <div class="affiliate-badge">食費・日用品の節約なら鉄板の1枚！</div>
-    <div class="affiliate-content">
-      <div class="affiliate-text">
-        <h4 class="affiliate-title">楽天カード</h4>
-        <p class="affiliate-desc">年会費永年無料！スーパーやドラッグストアの買い物でも常時1.0%還元。楽天市場でのお米・飲料・調味料のまとめ買いで最大ポイント還元が受けられる節約生活の必需品。</p>
-        <ul class="affiliate-points">
-          <li><strong>年会費</strong>：永年無料</li>
-          <li><strong>還元率</strong>：通常1.0% / 楽天市場で3.0%以上</li>
-          <li><strong>ポイント使い道</strong>：楽天ペイでスーパーやコンビニの支払いに1pt=1円で利用可能</li>
-        </ul>
-        <div class="affiliate-cta">
-          <a href="https://www.rakuten-card.co.jp/" target="_blank" rel="noopener noreferrer nofollow" class="btn btn-primary btn-large">楽天カード 公式サイトへ</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+{{cta:card-003}}
 
 <div class="affiliate-card">
   <div class="affiliate-card-inner">

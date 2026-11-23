@@ -62,16 +62,7 @@ updated: '2026-11-17'
 - 最短10秒の即時発行で、申し込んだその場からApple PayやGoogle Payで買い物可能
 - Vポイントは1ポイント＝1円として買い物やカードの支払いに充当可能
 
-<div class="affiliate-card">
-  <div style="font-size: 0.78rem; font-weight: 800; color: #ff5722; margin-bottom: 0.5rem;">[PR] 三井住友カード(NL)</div>
-  <h3 style="font-size: 1.25rem; font-weight: 900; margin-bottom: 0.75rem;">三井住友カード（NL）</h3>
-  <p style="font-size: 0.9rem; color: #555; margin-bottom: 1.25rem;">
-    対象のコンビニ・飲食店でスマホのタッチ決済を使うと最大7％ポイント還元（条件あり）。年会費は永年無料です。
-  </p>
-  <a href="https://www.smbc-card.com/" target="_blank" rel="noopener noreferrer nofollow" class="btn-cta">
-    三井住友カード（NL）を申し込む（無料） →
-  </a>
-</div>
+{{cta:card-001}}
 
 ---
 
@@ -90,16 +81,7 @@ updated: '2026-11-17'
 - セブン-イレブンで2.0%還元
 - 高いセキュリティと日本発の国際ブランドならではの手厚いサポート
 
-<div class="affiliate-card">
-  <div style="font-size: 0.78rem; font-weight: 800; color: #ff5722; margin-bottom: 0.5rem;">[PR] 39歳以下限定・高還元プロパーカード</div>
-  <h3 style="font-size: 1.25rem; font-weight: 900; margin-bottom: 0.75rem;">JCB CARD W</h3>
-  <p style="font-size: 0.9rem; color: #555; margin-bottom: 1.25rem;">
-    Amazonで2.0%、スタバで最大10.5%！どこでもポイント2倍（1.0%）の年会費永年無料カード。
-  </p>
-  <a href="https://www.jcb.co.jp/" target="_blank" rel="noopener noreferrer nofollow" class="btn-cta">
-    JCB CARD W の詳細・申し込みはこちら →
-  </a>
-</div>
+{{cta:card-002}}
 
 ---
 
@@ -115,16 +97,7 @@ updated: '2026-11-17'
 - どこで使っても1.0%の高還元
 - 貯まった楽天ポイントは、街中のコンビニ、ドラッグストア、マクドナルド、楽天ペイなどで現金同様に消化可能
 
-<div class="affiliate-card">
-  <div style="font-size: 0.78rem; font-weight: 800; color: #ff5722; margin-bottom: 0.5rem;">[PR] 新規入会＆利用で数千ポイントプレゼント中！</div>
-  <h3 style="font-size: 1.25rem; font-weight: 900; margin-bottom: 0.75rem;">楽天カード</h3>
-  <p style="font-size: 0.9rem; color: #555; margin-bottom: 1.25rem;">
-    楽天市場でポイント常時3倍！年会費永年無料・顧客満足度No.1の定番高還元カード。
-  </p>
-  <a href="https://www.rakuten-card.co.jp/" target="_blank" rel="noopener noreferrer nofollow" class="btn-cta">
-    楽天カードを公式サイトで申し込む →
-  </a>
-</div>
+{{cta:card-003}}
 
 ---
 

@@ -146,23 +146,5 @@ flowchart LR
 
 今すぐゴールド（NL）を手に入れて、年会費永年無料のゴールドホルダーを目指しましょう！
 
-<div class="affiliate-card">
-  <div class="affiliate-card-inner">
-    <div class="affiliate-badge">100万円修行で年会費が一生無料！</div>
-    <div class="affiliate-content">
-      <div class="affiliate-text">
-        <h4 class="affiliate-title">三井住友カード ゴールド（NL）</h4>
-        <p class="affiliate-desc">年100万円の利用で翌年以降の年会費5,500円が永年無料！さらに毎年10,000pt還元。空港ラウンジ無料＆対象コンビニ・外食で最大7%還元のハイパフォーマー。</p>
-        <ul class="affiliate-points">
-          <li><strong>年会費</strong>：5,500円（年間100万円利用で翌年以降<strong>永年無料</strong>）</li>
-          <li><strong>還元率</strong>：通常0.5% ＋ 特約店最大7.0% ＋ 年間利用ボーナス10,000pt</li>
-          <li><strong>特典</strong>：国内主要空港ラウンジ無料 / SBI証券クレカ積立で高還元</li>
-        </ul>
-        <div class="affiliate-cta">
-          <a href="https://www.smbc-card.com/" target="_blank" rel="noopener noreferrer nofollow" class="btn btn-primary btn-large">三井住友カード ゴールド（NL）公式サイトへ</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+{{cta:card-smbc-gold}}
 

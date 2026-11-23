@@ -73,16 +73,7 @@ updated: '2026-11-19'
 - 学生や新社会人で、年会費を1円も払いたくない人
 - コンビニやファストフード専用の「サブカード」として使いたい人
 
-<div class="affiliate-card">
-  <div style="font-size: 0.78rem; font-weight: 800; color: #ff5722; margin-bottom: 0.5rem;">[PR] 年会費永年無料・最短10秒発行</div>
-  <h3 style="font-size: 1.25rem; font-weight: 900; margin-bottom: 0.75rem;">三井住友カード（NL）</h3>
-  <p style="font-size: 0.9rem; color: #555; margin-bottom: 1.25rem;">
-    対象のコンビニ・飲食店で最大7％ポイント還元！維持費ゼロで誰でも持てる王道カード。
-  </p>
-  <a href="https://www.smbc-card.com/" target="_blank" rel="noopener noreferrer nofollow" class="btn-cta">
-    三井住友カード（NL）を申し込む（無料） →
-  </a>
-</div>
+{{cta:card-001}}
 
 ---
 
@@ -100,16 +91,7 @@ updated: '2026-11-19'
 ### 損益分岐点（いくら使えばゴールドがお得？）
 - **年間利用額が100万円（月あたり約8.3万円）に届く人**は、迷わずゴールド（NL）を選ぶべきです。家賃、光熱費、食費、旅行代金などを集約すれば、一人暮らしやファミリー世帯なら十分に達成可能な金額です。
 
-<div class="affiliate-card">
-  <div style="font-size: 0.78rem; font-weight: 800; color: #ff5722; margin-bottom: 0.5rem;">[PR] 100万円達成で年会費が永年無料に</div>
-  <h3 style="font-size: 1.25rem; font-weight: 900; margin-bottom: 0.75rem;">三井住友カード ゴールド（NL）</h3>
-  <p style="font-size: 0.9rem; color: #555; margin-bottom: 1.25rem;">
-    毎年100万円利用で10,000pt還元＋空港ラウンジ無料！高コスパな大人気ゴールドカード。
-  </p>
-  <a href="https://www.smbc-card.com/" target="_blank" rel="noopener noreferrer nofollow" class="btn-cta">
-    三井住友カード ゴールド（NL）の詳細はこちら →
-  </a>
-</div>
+{{cta:card-smbc-gold}}
 
 ---
 
@@ -136,16 +118,7 @@ updated: '2026-11-19'
 - **年間利用額が200万円以上（月17万円以上）**: 継続特典20,000pt ＋ 通常20,000pt ＝ 40,000pt（これだけで年会費を上回るプラス7,000円の黒字）。
 - **特約店（旅行やETC、スーパー）をよく使う人**: 年間150万円程度でも十分に年会費を上回るポイントを回収できます。
 
-<div class="affiliate-card">
-  <div style="font-size: 0.78rem; font-weight: 800; color: #ff5722; margin-bottom: 0.5rem;">[PR] ポイント特化型の最高峰プラチナカード</div>
-  <h3 style="font-size: 1.25rem; font-weight: 900; margin-bottom: 0.75rem;">三井住友カード プラチナプリファード</h3>
-  <p style="font-size: 0.9rem; color: #555; margin-bottom: 1.25rem;">
-    通常還元率1.0%＋特約店最大+14%！年間200万以上の決済で年会費33,000円を軽くペイ。
-  </p>
-  <a href="https://www.smbc-card.com/" target="_blank" rel="noopener noreferrer nofollow" class="btn-cta">
-    プラチナプリファードの特典・申し込みはこちら →
-  </a>
-</div>
+{{cta:card-smbc-plat}}
 
 ---
 

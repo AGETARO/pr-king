@@ -3,6 +3,7 @@ import './globals.css';
 import Link from 'next/link';
 import Script from 'next/script';
 import HeaderClock from '../components/HeaderClock';
+import AffiliateClickTracker from '../components/AffiliateClickTracker';
 
 const SITE_NAME = process.env.SITE_NAME || 'PR-KING';
 const SITE_URL = process.env.SITE_URL || 'https://lifetime.pr-king.workers.dev';
@@ -54,6 +55,7 @@ export default function RootLayout({ children }) {
                 `,
               }}
             />
+            <AffiliateClickTracker />
           </>
         )}
 
