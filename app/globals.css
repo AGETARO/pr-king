@@ -1581,3 +1581,9 @@ img {
 .aff-banner .aff-cta-pr { display: inline-block; margin-bottom: .4rem; }
 .aff-banner a { display: inline-block; line-height: 0; }
 .aff-banner img { max-width: 100%; height: auto; }
+
+/* スマホで表の1列目（項目名）が1文字ずつ折り返されないように */
+@media (max-width: 768px) {
+  .gizmodo-post-body th:first-child,
+  .gizmodo-post-body td:first-child { min-width: 6.5em; }
+}
