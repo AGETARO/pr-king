@@ -34,11 +34,11 @@ export default function PromoBanner({ id = 'seminar', wide = false }) {
     </>
   );
 
-  // 本文エリア用（横長バナー）：中央寄せ＋「PR」表記
+  // 本文エリア用（横長バナー）：中央寄せ＋「広告」表記
   if (wide) {
     return (
       <div style={{ textAlign: 'center', margin: '2rem 0' }}>
-        <div style={{ fontSize: '0.7rem', color: 'var(--text-muted)', marginBottom: '0.35rem' }}>PR</div>
+        <div style={{ fontSize: '0.7rem', color: 'var(--text-muted)', marginBottom: '0.35rem' }}>広告</div>
         {banner}
       </div>
     );
@@ -47,7 +47,7 @@ export default function PromoBanner({ id = 'seminar', wide = false }) {
   // サイドバー用
   return (
     <div className="gizmodo-ad-box" style={{ textAlign: 'center' }}>
-      <span className="ad-corner-tag">PR</span>
+      <span className="ad-corner-tag">広告</span>
       {banner}
     </div>
   );

@@ -1,6 +1,6 @@
 ---
 title: "PR-KINGとは？クレカ・お金の賢い選び方を発信するメディア"
-description: "PR-KINGは、クレジットカード・NISA・節約など「お金の賢い使い方」を徹底比較するメディアです。最新情報をわかりやすく解説します。"
+description: "PR-KINGは、クレジットカード・NISA・節約など「お金の使い方」を比較・解説するメディアです。"
 slug: "welcome"
 category: "お知らせ"
 cluster: "導入"
@@ -15,8 +15,6 @@ updated: "2026-11-20"
 
 # PR-KINGとは？クレカ・お金の賢い選び方を発信するメディア
 
-【PR】本記事にはアフィリエイト広告が含まれています。
-
 ![クレジットカードとお金の賢い選び方](https://images.unsplash.com/photo-1556742044-3c52d6e88c62?auto=format&fit=crop&w=1000&q=80)
 
 ## PR-KINGについて
@@ -30,9 +28,9 @@ updated: "2026-11-20"
 ## PR-KINGが扱うテーマ
 
 ### 💳 クレジットカード比較
-年会費・ポイント還元率・特典を徹底比較。あなたのライフスタイルに合った一枚を見つけましょう。
+年会費・ポイント還元率・特典を比較。あなたのライフスタイルに合った一枚を見つけましょう。
 
-- [三井住友カード（NL）vs ゴールドNL vs プラチナプリファード徹底比較](/posts/smbc-card-nl-vs-gold-vs-platinum-preferred/)
+- [三井住友カード（NL）vs ゴールドNL vs プラチナプリファード比較](/posts/smbc-card-nl-vs-gold-vs-platinum-preferred/)
 - [JCBカードW vs 三井住友カード（NL）どちらがお得？](/posts/jcb-card-w-vs-smbc-card-nl/)
 - [クレジットカードおすすめランキング](/posts/recommended-credit-cards-ranking/)
 

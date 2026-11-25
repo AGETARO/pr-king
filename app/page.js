@@ -61,7 +61,7 @@ export default function HomePage() {
               {subPost1 && (
                 <article className="sub-grid-card">
                   <div className="sub-card-meta">
-                    {subPost1.hasPromo && <span className="sub-pr-badge">PR</span>}
+                    
                     <time className="sub-timestamp" dateTime={subPost1.updated}>{subPost1.formattedDate}</time>
                   </div>
                   <h3 className="sub-card-title">
@@ -85,7 +85,7 @@ export default function HomePage() {
               {subPost2 && (
                 <article className="sub-grid-card">
                   <div className="sub-card-meta">
-                    {subPost2.hasPromo && <span className="sub-pr-badge">PR</span>}
+                    
                     <time className="sub-timestamp" dateTime={subPost2.updated}>{subPost2.formattedDate}</time>
                   </div>
                   <h3 className="sub-card-title">
@@ -118,7 +118,7 @@ export default function HomePage() {
               {featurePost1 && (
                 <article className="feature-row-article">
                   <div className="feature-row-meta">
-                    {featurePost1.hasPromo && <span className="sub-pr-badge">PR</span>}
+                    
                     <time className="feature-date" dateTime={featurePost1.updated}>{featurePost1.formattedDate}</time>
                   </div>
                   <h3 className="feature-row-title">
@@ -142,7 +142,7 @@ export default function HomePage() {
               {featurePost2 && (
                 <article className="feature-row-article">
                   <div className="feature-row-meta">
-                    {featurePost2.hasPromo && <span className="sub-pr-badge">PR</span>}
+                    
                     <time className="feature-date" dateTime={featurePost2.updated}>{featurePost2.formattedDate}</time>
                   </div>
                   <h3 className="feature-row-title">

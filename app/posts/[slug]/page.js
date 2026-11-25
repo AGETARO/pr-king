@@ -111,7 +111,6 @@ export default async function PostPage({ params }) {
               <time className="article-entry-date" dateTime={post.updated}>{post.formattedDate} 更新</time>
               <div className="article-meta-tags">
                 <span className="article-cluster-pill">{post.cluster || post.category}</span>
-                {post.hasPromo && <span className="article-pr-notice">PR</span>}
               </div>
             </div>
 
@@ -119,9 +118,10 @@ export default async function PostPage({ params }) {
             <h1 className="gizmodo-post-title">{post.title}</h1>
 
             {/* 広告表記（記事の冒頭に表示） */}
-            {post.hasPromo && (
+            {/* 本文・サイドバーに広告があるため全記事に表示（ステマ規制対応。広告表記はここ1か所に集約） */}
+            {(
               <div className="gizmodo-post-sub-bar">
-                <span className="post-discrete-pr-note">【PR】本記事にはアフィリエイト・プロモーション広告が含まれます</span>
+                <span className="post-discrete-pr-note">この記事には広告が含まれます</span>
               </div>
             )}
 
