@@ -135,3 +135,6 @@ def frame(no, label, html, css_href, total=10):
 <div class="walk">{walk_html}</div><div class="walk-label">{SERIES}　全10回</div>
 <div class="side"><div class="nametag"><span>{NAVI_ROLE}</span>{NAVI_NAME}</div></div>
 <div class="content">{html}</div></body></html>"""
+
+# Mouth position in the navigator photo (photo pixel coordinates) for the talking animation.
+MOUTH = dict(cx=258, y=258, half=38, open_px=16, curve=0.006)

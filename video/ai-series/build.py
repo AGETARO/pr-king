@@ -74,7 +74,7 @@ def tts(text, path, engine):
 def photo_card(path):
     x0, y0, x1, y1 = CARD_BOX
     cw, ch = x1 - x0 - 10, y1 - y0 - 10  # leave room for the offset shadow
-    im = Image.open(path).convert("RGB")
+    im = (path if isinstance(path, Image.Image) else Image.open(path)).convert("RGB")
     # cover-crop, biased slightly upward (faces tend to be in the upper half)
     s = max(cw / im.width, ch / im.height)
     im = im.resize((round(im.width * s), round(im.height * s)), Image.LANCZOS)
@@ -141,7 +141,7 @@ def subtitle_img(text, font):
 
 
 # ---------------------------------------------------------------- episode
-def build_episode(ep, work, card, engine, preview=None):
+def build_episode(ep, work, cards, engine, preview=None):
     no = ep["no"]
     wd = f"{work}/ep{no:02d}"
     os.makedirs(f"{wd}/slides", exist_ok=True)
@@ -183,7 +183,10 @@ def build_episode(ep, work, card, engine, preview=None):
     env = np.clip(rms / ref, 0, 1)
     sm = np.zeros(nfr)
     for k in range(nfr):
-        sm[k] = max(env[k], sm[k - 1] * 0.82) if k else env[k]
+        sm[k] = max(env[k], sm[k - 1] * 0.6) if k else env[k]
+    levels = len(cards)
+    mouth = np.clip(np.round(np.clip(sm * 1.15, 0, 1) * (levels - 1)), 0, levels - 1).astype(int)
+    mouth[sm < 0.12] = 0
 
     font = ImageFont.truetype(FONT, 40)
     slides, subs, bases = {}, {}, {}
@@ -208,7 +211,6 @@ def build_episode(ep, work, card, engine, preview=None):
                             "-crf", "20", "-pix_fmt", "yuv420p", out_v], stdin=subprocess.PIPE)
     ei, prev_key, t_change = 0, None, -10
     cur_key = events[0][1:]
-    phase = 0.0
     for f in range(nfr):
         tf = f / FPS
         while ei < len(events) and events[ei][0] <= tf:
@@ -219,9 +221,8 @@ def build_episode(ep, work, card, engine, preview=None):
         frame = base(cur_key)
         a = (tf - t_change) / XFADE
         frame = Image.blend(base(prev_key), frame, 0.5 - 0.5 * math.cos(math.pi * a)) if prev_key and a < 1 else frame.copy()
-        phase += 2 * math.pi * 3.2 / FPS * (0.4 + sm[f])
-        dy = -round(14 * sm[f] * abs(math.sin(phase))) + round(3 * math.sin(2 * math.pi * tf / 4.0))
-        frame.alpha_composite(card, (CARD_BOX[0], CARD_BOX[1] + dy))
+        dy = round(2 * math.sin(2 * math.pi * tf / 4.5))
+        frame.alpha_composite(cards[mouth[f]], (CARD_BOX[0], CARD_BOX[1] + dy))
         enc.stdin.write(frame.convert("RGB").tobytes())
     enc.stdin.close(); enc.wait()
     final = f"{work}/第{no:02d}回_{ep['short']}.mp4"
@@ -241,10 +242,11 @@ def main():
     ap.add_argument("--preview", type=int)
     a = ap.parse_args()
     os.makedirs(a.work, exist_ok=True)
-    card = photo_card(a.photo)
+    import talking_photo
+    cards = [photo_card(im) for im in talking_photo.make_frames(a.photo, series.MOUTH, 8)]
     for n in [int(x) for x in a.ep.split(",")]:
         ep = importlib.import_module(f"episodes.ep{n:02d}").EP
-        build_episode(ep, a.work, card, a.engine, a.preview)
+        build_episode(ep, a.work, cards, a.engine, a.preview)
 
 
 if __name__ == "__main__":
