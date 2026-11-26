@@ -46,7 +46,7 @@ def sh(*a, **k):
 
 
 def reading(text):
-    for a, b in series.READINGS:
+    for a, b in series.PERSON_KATA + series.READINGS:
         text = text.replace(a, b)
     return text
 
@@ -71,16 +71,17 @@ def tts(text, path, engine):
 
 
 # ---------------------------------------------------------------- photo card
-def photo_card(path):
+def photo_card(path, face=None):
     x0, y0, x1, y1 = CARD_BOX
     cw, ch = x1 - x0 - 10, y1 - y0 - 10  # leave room for the offset shadow
     im = (path if isinstance(path, Image.Image) else Image.open(path)).convert("RGB")
-    # cover-crop, biased slightly upward (faces tend to be in the upper half)
-    s = max(cw / im.width, ch / im.height)
-    im = im.resize((round(im.width * s), round(im.height * s)), Image.LANCZOS)
-    left = (im.width - cw) // 2
-    top = max(0, min(im.height - ch, int((im.height - ch) * 0.4)))
-    im = im.crop((left, top, left + cw, top + ch))
+    face = face or dict(cx=im.width / 2, cy=im.height / 2, crop_h=im.height)
+    # crop a box of the card's aspect ratio centred on the face, kept inside the photo
+    bh = min(face["crop_h"], im.height, im.width * ch / cw)
+    bw = bh * cw / ch
+    bx = min(max(face["cx"] - bw / 2, 0), im.width - bw)
+    by = min(max(face["cy"] - bh / 2, 0), im.height - bh)
+    im = im.resize((cw, ch), Image.LANCZOS, box=(bx, by, bx + bw, by + bh))
     card = Image.new("RGBA", (cw + 10, ch + 10), (0, 0, 0, 0))
     r = 40
     sh_mask = Image.new("L", (cw, ch), 0)
@@ -164,6 +165,8 @@ def build_episode(ep, work, cards, engine, preview=None):
         for j, ln in enumerate(sc["lines"]):
             step, sub = ln[0], ln[1]
             say = ln[2] if len(ln) > 2 else reading(sub)
+            for a_, b_ in series.PERSON_KATA:
+                say = say.replace(a_, b_)
             a = tts(say, f"{wd}/tts/{i:02d}_{j:02d}.wav", engine)
             events.append((t, i, step, sub))
             audio.append(a); t += len(a) / SR
@@ -183,10 +186,12 @@ def build_episode(ep, work, cards, engine, preview=None):
     env = np.clip(rms / ref, 0, 1)
     sm = np.zeros(nfr)
     for k in range(nfr):
-        sm[k] = max(env[k], sm[k - 1] * 0.6) if k else env[k]
+        sm[k] = max(env[k], sm[k - 1] * 0.65) if k else env[k]
     levels = len(cards)
-    mouth = np.clip(np.round(np.clip(sm * 1.15, 0, 1) * (levels - 1)), 0, levels - 1).astype(int)
-    mouth[sm < 0.12] = 0
+    target = np.clip(np.round(np.clip((sm - 0.12) / 0.88, 0, 1) * (levels - 1)), 0, levels - 1).astype(int)
+    mouth = np.zeros(nfr, int)  # move at most 3 steps per frame so the jaw never snaps
+    for k in range(1, nfr):
+        mouth[k] = mouth[k - 1] + int(np.clip(target[k] - mouth[k - 1], -3, 3))
 
     font = ImageFont.truetype(FONT, 40)
     slides, subs, bases = {}, {}, {}
@@ -243,7 +248,7 @@ def main():
     a = ap.parse_args()
     os.makedirs(a.work, exist_ok=True)
     import talking_photo
-    cards = [photo_card(im) for im in talking_photo.make_frames(a.photo, series.MOUTH, 8)]
+    cards = [photo_card(im, series.FACE) for im in talking_photo.make_frames(a.photo, series.MOUTH, 8)]
     for n in [int(x) for x in a.ep.split(",")]:
         ep = importlib.import_module(f"episodes.ep{n:02d}").EP
         build_episode(ep, a.work, cards, a.engine, a.preview)

@@ -137,4 +137,12 @@ def frame(no, label, html, css_href, total=10):
 <div class="content">{html}</div></body></html>"""
 
 # Mouth position in the navigator photo (photo pixel coordinates) for the talking animation.
-MOUTH = dict(cx=258, y=258, half=38, open_px=16, curve=0.006)
+MOUTH = dict(cx=258, y=258, half=36, open_px=8, lift=0.1, curve=0.006)
+# Face center and crop height (photo pixels) so the face sits in the middle of the frame.
+FACE = dict(cx=255, cy=185, crop_h=380)
+
+# 「方」は人を指すときは「かた」と読ませる（音声のみ。字幕はそのまま）
+PERSON_KATA = [
+    ("苦手な方", "苦手なかた"), ("外国の方", "外国のかた"), ("迷っている方", "迷っているかた"),
+    ("スタッフの方", "スタッフのかた"), ("住民の方", "住民のかた"),
+]

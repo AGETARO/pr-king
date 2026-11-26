@@ -33,12 +33,12 @@ def make_frames(path, mouth, levels=8):
             continue
         dy = d * q * jaw * below
         # the upper lip lifts a little too (fades out toward the nose)
-        lift = 0.18 * d * q * (1 - _smooth((line - yy) / 14)) * (1 - below)
+        lift = mouth.get("lift", 0.18) * d * q * (1 - _smooth((line - yy) / 14)) * (1 - below)
         map_x = xx
         map_y = yy - dy + lift
         warped = cv2.remap(src, map_x, map_y, cv2.INTER_LINEAR, borderMode=cv2.BORDER_REFLECT)
-        top = line - 0.18 * d * q
-        gap = d * q * 1.18                                  # gap height per column
+        top = line - mouth.get("lift", 0.18) * d * q
+        gap = d * q * (1 + mouth.get("lift", 0.18))                                  # gap height per column
         inside = (yy >= top) & (yy < top + gap)
         rel = np.where(gap > 0, (yy - top) / np.maximum(gap, 1e-3), 0)  # 0 at upper lip, 1 at lower lip
         throat = np.array([24, 12, 14], np.float32)
