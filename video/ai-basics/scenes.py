@@ -11,7 +11,7 @@ READINGS = [
     ("claude --version", "クロード ハイフン ハイフン バージョン"),
     ("claude.ai", "クロード ドット エーアイ"),
     ("index.html", "インデックス ドット エイチティーエムエル"),
-    ("Claude Code", "クロード コード"),
+    ("Claude Code", "クロードコード"),
     ("ChatGPT", "チャットジーピーティー"),
     ("Anthropic", "アンソロピック"),
     ("Gemini", "ジェミニ"),
@@ -357,7 +357,7 @@ SCENES = [
   <h1 class="hero">おつかれさまでした</h1>
   <p class="lead">まずは今日、ひとつ話しかけてみましょう。</p>
   <div class="credits">
-    <p>音声合成：HTS Voice "Mei"（© Nagoya Institute of Technology, CC BY 3.0）／ Open JTalk</p>
+    <p>音声：VOICEVOX:四国めたん</p>
     <p>フォント：Noto Sans CJK JP（SIL Open Font License 1.1）</p>
     <p>イラスト・スライド：本動画のためのオリジナル制作</p>
     <p>料金・手順は2026年11月時点の情報です。本動画はAnthropic社とは関係のない非公式の解説です。<br>Claude および Claude Code は Anthropic PBC の商標です。</p>

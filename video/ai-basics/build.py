@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """Build the explainer video.
 
-Usage: python3 build.py <work_dir> <htsvoice_path> [--preview N]
-Requires: open_jtalk (+ naist-jdic), ffmpeg, node + playwright, Pillow, numpy.
+Usage: python3 build.py <work_dir> [voicevox_engine_url] [--preview N]
+Voice: VOICEVOX:四国めたん (engine e.g. `docker run -p 50021:50021 voicevox/voicevox_engine:cpu-latest`)
+Requires: VOICEVOX engine, ffmpeg, node + playwright, Pillow, numpy.
 """
 import json, math, os, re, subprocess, sys, wave
 import numpy as np
@@ -14,7 +15,6 @@ from scenes import SCENES, SERIES, READINGS  # noqa: E402
 import avatar  # noqa: E402
 
 W, H, FPS, SR = 1920, 1080, 30, 48000
-DIC = "/var/lib/mecab/dic/open-jtalk/naist-jdic"
 FONT_BOLD = "/usr/share/fonts/opentype/noto/NotoSansCJK-Bold.ttc"
 AV_X, AV_Y = 1370, 290  # avatar top-left on the frame
 GAP_LINE, PAD_START, PAD_END, XFADE = 0.40, 0.7, 1.1, 0.35
@@ -86,10 +86,23 @@ def reading(text):
     return text
 
 
-def tts(text, path, voice):
-    sh("open_jtalk", "-x", DIC, "-m", voice, "-r", "0.93", "-fm", "-1.0", "-jf", "1.1",
-       "-ow", path, input=text.encode("utf-8"))
-    with wave.open(path) as w:
+VV_STYLE = 2  # 四国めたん ノーマル
+VV_PARAMS = dict(speedScale=1.0, pitchScale=-0.02, intonationScale=0.95, volumeScale=1.0,
+                 prePhonemeLength=0.05, postPhonemeLength=0.05, outputSamplingRate=SR, outputStereo=False)
+
+
+def tts(text, path, engine):
+    """Synthesize with a running VOICEVOX engine (HTTP API)."""
+    import urllib.parse, urllib.request, io
+    op = urllib.request.build_opener(urllib.request.ProxyHandler({}))
+    q = urllib.parse.urlencode({"text": text, "speaker": VV_STYLE})
+    query = json.loads(op.open(urllib.request.Request(f"{engine}/audio_query?{q}", method="POST")).read())
+    query.update(VV_PARAMS)
+    req = urllib.request.Request(f"{engine}/synthesis?speaker={VV_STYLE}", data=json.dumps(query).encode(),
+                                 headers={"Content-Type": "application/json"}, method="POST")
+    data = op.open(req).read()
+    open(path, "wb").write(data)
+    with wave.open(io.BytesIO(data)) as w:
         a = np.frombuffer(w.readframes(w.getnframes()), dtype=np.int16).astype(np.float32) / 32768
         assert w.getframerate() == SR
     return a
@@ -140,7 +153,8 @@ def subtitle_img(text, font):
 
 # ---------------------------------------------------------------- main
 def main():
-    work, voice = sys.argv[1], sys.argv[2]
+    work = sys.argv[1]
+    voice = sys.argv[2] if len(sys.argv) > 2 and not sys.argv[2].startswith("--") else "http://localhost:50021"
     preview = int(sys.argv[sys.argv.index("--preview") + 1]) if "--preview" in sys.argv else None
     os.makedirs(f"{work}/tts", exist_ok=True)
     render_assets(work)
