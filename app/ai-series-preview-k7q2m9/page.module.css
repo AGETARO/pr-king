@@ -1,0 +1,17 @@
+.wrap { max-width: 1100px; margin: 0 auto; padding: 24px 16px 64px; }
+.notice { background: #fff4d6; border: 2px solid #e8c15a; border-radius: 12px; padding: 12px 16px; font-size: 14px; line-height: 1.6; margin-bottom: 24px; }
+.title { font-size: 28px; font-weight: 800; margin: 0 0 8px; }
+.lead { font-size: 15px; line-height: 1.7; color: #555; margin: 0 0 28px; }
+.list { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 24px; }
+.item { background: #fff; border: 1px solid #e5e5e5; border-radius: 14px; overflow: hidden; }
+.video { display: block; width: 100%; aspect-ratio: 16 / 9; background: #000; }
+.meta { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 10px; padding: 12px 14px 14px; }
+.ep { background: #24365a; color: #fff; font-size: 12px; font-weight: 700; border-radius: 999px; padding: 2px 10px; }
+.epTitle { font-size: 15px; font-weight: 700; line-height: 1.5; flex: 1 1 200px; }
+.len { font-size: 13px; color: #777; }
+.sub { font-size: 22px; font-weight: 800; margin: 48px 0 16px; }
+.shorts { display: flex; flex-wrap: wrap; gap: 24px; }
+.short { margin: 0; width: min(280px, 100%); }
+.shortVideo { display: block; width: 100%; aspect-ratio: 9 / 16; background: #000; border-radius: 14px; }
+.short figcaption { font-size: 14px; font-weight: 700; margin-top: 8px; line-height: 1.5; }
+.credit { margin-top: 40px; font-size: 12px; color: #888; }
