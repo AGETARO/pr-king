@@ -21,12 +21,13 @@ def ts(t):
 def chapters(ep, work):
     t, out = 0.3, []
     for i, sc in enumerate(ep["scenes"]):
-        out.append((t, sc["label"]))
+        if not sc.get("endscreen"):
+            out.append((t, sc["label"]))
         t += build.PAD_START
         for j in range(len(sc["lines"])):
             with wave.open(f"{work}/ep{ep['no']:02d}/tts/{i:02d}_{j:02d}.wav") as w:
                 t += w.getnframes() / w.getframerate()
-            t += build.GAP_LINE if j < len(sc["lines"]) - 1 else build.PAD_END
+            t += build.GAP_LINE if j < len(sc["lines"]) - 1 else build.PAD_END + sc.get("hold", 0)
     # YouTube: first chapter at 0:00, chapters >= 10 s; merge repeated labels
     merged = []
     for st, lb in out:

@@ -1,4 +1,4 @@
-from series import cover, outro, cards, blist, callout, chat
+from series import cover, outro, cards, blist, callout, chat, ENDSCREEN
 
 EP = dict(no=1, title="AIってなに？どれを使えばいい？", short="AIってなに", scenes=[
     dict(label="はじめに", html=cover(1, "AIってなに？<br>どれを使えばいい？",
@@ -157,6 +157,11 @@ EP = dict(no=1, title="AIってなに？どれを使えばいい？", short="AI�
         (3, "はじめの一つには、Claudeがおすすめです。"),
         (4, "そして、AIはまちがえることもあるので、最後は自分で確認して決めましょう。"),
         (5, "次回、第2回は、Claudeを使いはじめよう。登録の方法と、画面の見かたを紹介します。"),
-        (5, "ここまで見てくれて、ありがとうございました。また次回、いっしょにお散歩しましょう。"),
+        (5, "ここまで見てくれて、ありがとうございました。"),
+    ]),
+    dict(label="またね！", endscreen=True, hold=4.0, html=ENDSCREEN, lines=[
+        (0, "このチャンネルでは、AIの使いかたを、やさしく紹介しています。"),
+        (0, "役に立ったら、チャンネル登録と、高評価をしてもらえるとうれしいです。"),
+        (0, "次の動画も、続けて見てくださいね。またね！"),
     ]),
 ])

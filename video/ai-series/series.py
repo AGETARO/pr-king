@@ -146,3 +146,12 @@ PERSON_KATA = [
     ("苦手な方", "苦手なかた"), ("外国の方", "外国のかた"), ("迷っている方", "迷っているかた"),
     ("スタッフの方", "スタッフのかた"), ("住民の方", "住民のかた"),
 ]
+
+
+# Last ~20 s of an episode: leaves room for YouTube end-screen elements
+# (a video on the left, the subscribe button in the middle). Dashed boxes are only guides.
+ENDSCREEN = """<div class="endscreen">
+<h2>見てくれてありがとう！</h2>
+<div class="es-video">次の動画</div>
+<div class="es-sub">チャンネル<br>登録</div>
+</div>"""

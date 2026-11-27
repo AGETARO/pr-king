@@ -159,6 +159,7 @@ def build_episode(ep, work, cards, engine, preview=None):
     sh("node", f"{work}/render.js", f"{wd}/jobs.json")
 
     audio, events, t = [np.zeros(int(SR * 0.3), np.float32)], [], 0.3
+    srt = []
     for i, sc in enumerate(scenes):
         audio.append(np.zeros(int(SR * PAD_START), np.float32))
         events.append((t, i, sc["lines"][0][0], None)); t += PAD_START
@@ -170,9 +171,15 @@ def build_episode(ep, work, cards, engine, preview=None):
             a = tts(say, f"{wd}/tts/{i:02d}_{j:02d}.wav", engine)
             events.append((t, i, step, sub))
             audio.append(a); t += len(a) / SR
-            g = GAP_LINE if j < len(sc["lines"]) - 1 else PAD_END
+            srt.append((t - len(a) / SR, t, sub))
+            g = GAP_LINE if j < len(sc["lines"]) - 1 else PAD_END + sc.get("hold", 0)
             audio.append(np.zeros(int(SR * g), np.float32)); t += g
     audio = np.concatenate(audio)
+    def _ts(x):
+        ms = int(round(x * 1000)); return f"{ms // 3600000:02d}:{ms // 60000 % 60:02d}:{ms // 1000 % 60:02d},{ms % 1000:03d}"
+    with open(f"{work}/第{no:02d}回_{ep['short']}.srt", "w", encoding="utf-8") as f:
+        for k, (a0, a1, sub) in enumerate(srt, 1):
+            f.write(f"{k}\n{_ts(a0)} --> {_ts(a1)}\n{sub}\n\n")
     audio = audio / max(1e-6, np.abs(audio).max()) * 0.89
     total = len(audio) / SR
     with wave.open(f"{wd}/narration.wav", "wb") as w:
