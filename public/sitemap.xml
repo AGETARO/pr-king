@@ -59,6 +59,11 @@
     <priority>0.3</priority>
   </url>
   <url>
+    <loc>https://lifetime.pr-king.workers.dev/contact/</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
     <loc>https://lifetime.pr-king.workers.dev/posts/amazon-prime-sale-best-buys/</loc>
     <lastmod>2026-11-17</lastmod>
     <changefreq>weekly</changefreq>

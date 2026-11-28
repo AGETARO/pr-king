@@ -48,7 +48,7 @@ export default function AboutPage() {
                   {CONTACT_FORM_URL && (
                     <>
                       <br />
-                      <a href={CONTACT_FORM_URL} target="_blank" rel="noopener noreferrer">
+                      <a href={CONTACT_FORM_URL}>
                         お問い合わせフォーム
                       </a>
                     </>

@@ -48,6 +48,7 @@ const urls = [
   }).filter(Boolean),
   entry(`${SITE_URL}/about/`, '', 'yearly', '0.3'),
   entry(`${SITE_URL}/privacy/`, '', 'yearly', '0.3'),
+  entry(`${SITE_URL}/contact/`, '', 'yearly', '0.3'),
   ...posts.map((p) => entry(`${SITE_URL}/posts/${p.slug}/`, p.updated, 'weekly', '0.8')),
 ];
 

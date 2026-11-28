@@ -43,6 +43,11 @@ export default function PrivacyPage() {
             お問い合わせをいただいた場合に限り、お名前・メールアドレス・お問い合わせ内容などをお預かりします。
           </p>
           <p>
+            お問い合わせフォームの送信には、外部のフォーム送信サービス「FormSubmit」（https://formsubmit.co）を利用しています。
+            フォームに入力された内容は、同サービスを経由して当サイト運営者にメールで届きます。
+            同サービスにおける情報の取り扱いは、FormSubmitのプライバシーポリシーに基づきます。
+          </p>
+          <p>
             このほか、アクセス解析ツールや広告配信事業者を通じて、閲覧したページ、閲覧日時、参照元、端末・ブラウザの種類、おおよその地域などの情報が、Cookie等を用いて自動的に収集されます。これらの情報単体で特定の個人を識別することはできません。
           </p>
 
@@ -118,7 +123,7 @@ export default function PrivacyPage() {
             {CONTACT_FORM_URL && (
               <>
                 <br />
-                <a href={CONTACT_FORM_URL} target="_blank" rel="noopener noreferrer">
+                <a href={CONTACT_FORM_URL}>
                   お問い合わせフォーム
                 </a>
               </>

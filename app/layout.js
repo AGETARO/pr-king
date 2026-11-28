@@ -102,6 +102,7 @@ export default function RootLayout({ children }) {
                 <Link href="/posts/">ALL POSTS</Link>
                 <Link href="/privacy/">PRIVACY</Link>
                 <Link href="/about/">ABOUT</Link>
+                <Link href="/contact/">CONTACT</Link>
               </nav>
             </div>
             <div className="footer-bottom">

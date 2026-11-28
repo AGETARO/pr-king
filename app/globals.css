@@ -1587,3 +1587,103 @@ img {
   .gizmodo-post-body th:first-child,
   .gizmodo-post-body td:first-child { min-width: 6.5em; }
 }
+
+/* ===== お問い合わせフォーム（/contact/） ===== */
+.contact-note {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin-top: 0;
+}
+.contact-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+.contact-label {
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+.contact-label em,
+.contact-agree em {
+  font-style: normal;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  background: var(--accent-lime);
+  border-radius: 999px;
+  padding: 0.1rem 0.5rem;
+  margin-left: 0.4rem;
+  vertical-align: middle;
+}
+.contact-field input,
+.contact-field select,
+.contact-field textarea {
+  width: 100%;
+  font: inherit;
+  font-size: 16px; /* iOSで入力時に拡大されないように */
+  color: var(--text-primary);
+  background: var(--bg-primary);
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  padding: 0.75rem 0.9rem;
+}
+.contact-field textarea {
+  resize: vertical;
+  line-height: 1.7;
+}
+.contact-field input:focus,
+.contact-field select:focus,
+.contact-field textarea:focus {
+  outline: 2px solid var(--border-primary);
+  outline-offset: 1px;
+  border-color: var(--border-primary);
+}
+.contact-agree {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+.contact-agree input {
+  width: 18px;
+  height: 18px;
+  margin-top: 0.2rem;
+  flex-shrink: 0;
+}
+.contact-agree a {
+  text-decoration: underline;
+}
+.contact-submit {
+  align-self: flex-start;
+  font: inherit;
+  font-weight: 800;
+  font-size: 1rem;
+  color: #ffffff;
+  background: var(--text-primary);
+  border: none;
+  border-radius: 999px;
+  padding: 0.9rem 2.5rem;
+  cursor: pointer;
+}
+.contact-submit:hover {
+  background: #333333;
+}
+/* 迷惑メール対策の入力欄（人には見せない） */
+.contact-honeypot {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+@media (max-width: 640px) {
+  .contact-submit {
+    align-self: stretch;
+  }
+}
