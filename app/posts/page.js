@@ -3,12 +3,14 @@ import { Suspense } from 'react';
 import Link from 'next/link';
 import { getAllPosts, getHubs, getPickupPosts } from '../../lib/posts';
 import Sidebar from '../../components/Sidebar';
+import { withOg } from '../../lib/site';
 import PostsBrowser, { PostsView } from '../../components/PostsBrowser';
 
 export const metadata = {
   title: 'ALL STORIES 記事一覧',
   description: 'PR-KINGに掲載されているすべての記事一覧です。',
   alternates: { canonical: '/posts/' },
+  openGraph: withOg({ title: 'ALL STORIES 記事一覧', description: 'PR-KINGに掲載されているすべての記事一覧です。' }, '/posts/'),
 };
 
 export default function PostsPage() {

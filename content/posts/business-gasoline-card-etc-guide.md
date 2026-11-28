@@ -9,6 +9,10 @@ keyword: 法人ガソリンカード 審査なし 新設法人 個人事業主 E
 article_type: guide
 affiliate_ids:
   - etc-gas-card
+related:
+  - how-to-choose-credit-card
+  - credit-card-point-rate-calculation
+  - credit-card-security-guide
 updated: '2026-11-24'
 ---
 

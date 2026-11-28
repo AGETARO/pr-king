@@ -1,11 +1,12 @@
 // app/about/page.js - 運営者情報・編集方針
 import Link from 'next/link';
-import { SITE_NAME, OPERATOR_NAME, CONTACT_NAME, CONTACT_EMAIL, CONTACT_FORM_URL } from '../../lib/site';
+import { SITE_NAME, OPERATOR_NAME, CONTACT_NAME, CONTACT_EMAIL, CONTACT_FORM_URL, withOg } from '../../lib/site';
 
 export const metadata = {
   title: 'PR-KINGについて（運営者情報・編集方針）',
   description: 'PR-KINGの運営者情報、編集方針、広告・アフィリエイトに関する表記、お問い合わせ先をご案内します。',
   alternates: { canonical: '/about/' },
+  openGraph: withOg({}, '/about/'),
 };
 
 export default function AboutPage() {

@@ -8,12 +8,14 @@ import {
   CONTACT_FORM_URL,
   POLICY_ENACTED,
   POLICY_UPDATED,
+  withOg,
 } from '../../lib/site';
 
 export const metadata = {
   title: 'プライバシーポリシー',
   description: 'PR-KINGにおける個人情報・アクセス解析・Cookie・広告配信・アフィリエイトの取り扱いについて定めたプライバシーポリシーです。',
   alternates: { canonical: '/privacy/' },
+  openGraph: withOg({}, '/privacy/'),
 };
 
 export default function PrivacyPage() {

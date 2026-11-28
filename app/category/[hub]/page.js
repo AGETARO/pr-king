@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { getPostsByHub, getHubs, getPickupPosts } from '../../../lib/posts';
 import { HUBS, getHubBySlug, hubPath } from '../../../lib/hubs';
-import { SITE_NAME, SITE_URL } from '../../../lib/site';
+import { SITE_NAME, SITE_URL, withOg } from '../../../lib/site';
 import Sidebar from '../../../components/Sidebar';
 import { PostsView } from '../../../components/PostsBrowser';
 
@@ -21,7 +21,12 @@ export function generateMetadata({ params }) {
     title: hub.title,
     description: hub.description,
     alternates: { canonical: hubPath(hub) },
-    openGraph: { title: hub.title, description: hub.description, type: 'website' },
+    // og:image は、このカテゴリで一番新しい記事のアイキャッチ（SNSで中身が伝わる画像にする）
+    openGraph: withOg({
+      title: hub.title,
+      description: hub.description,
+      ...(getPostsByHub(hub.slug)[0]?.eyecatch ? { images: [{ url: getPostsByHub(hub.slug)[0].eyecatch }] } : {}),
+    }, hubPath(hub)),
   };
 }
 

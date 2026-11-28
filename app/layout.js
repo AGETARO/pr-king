@@ -5,19 +5,16 @@ import Script from 'next/script';
 import HeaderClock from '../components/HeaderClock';
 import AffiliateClickTracker from '../components/AffiliateClickTracker';
 
-const SITE_NAME = process.env.SITE_NAME || 'PR-KING';
-const SITE_URL = process.env.SITE_URL || 'https://lifetime.pr-king.workers.dev';
+import { SITE_NAME, SITE_URL, SITE_TAGLINE, SITE_DESCRIPTION, withOg } from '../lib/site';
+
 const GA_ID = process.env.GA_MEASUREMENT_ID || 'G-FTPK04ND5P';
 
 export const metadata = {
   metadataBase: new URL(SITE_URL),
-  title: { default: `${SITE_NAME} | テック＆ライフスタイル・デジタル決済メディア`, template: `%s | ${SITE_NAME}` },
-  description: '最新のトレンド、クレジットカード、サブスク、デジタルガジェットをシャープに切り取るテックマガジン',
-  openGraph: {
-    type: 'website',
-    locale: 'ja_JP',
-    siteName: SITE_NAME,
-  },
+  title: { default: `${SITE_NAME} | ${SITE_TAGLINE}`, template: `%s | ${SITE_NAME}` },
+  description: SITE_DESCRIPTION,
+  openGraph: withOg(),
+  twitter: { card: 'summary_large_image' },
   robots: {
     index: true,
     follow: true,
@@ -33,6 +30,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="ja">
+      <head>
+        {/* RSS（Feedly などの購読・新着の発見用）。各ページの alternates で上書きされないよう、ここに直接書く */}
+        <link rel="alternate" type="application/rss+xml" title={`${SITE_NAME} 新着記事`} href={`${SITE_URL.replace(/\/$/, '')}/feed.xml`} />
+      </head>
       <body>
         {/* Google Analytics (GA4) */}
         {GA_ID && (

@@ -3,17 +3,40 @@ import Link from 'next/link';
 import { getAllPosts, getHubs, getPickupPosts } from '../lib/posts';
 import PromoBanner from '../components/PromoBanner';
 import Sidebar from '../components/Sidebar';
+import { SITE_NAME, SITE_URL, SITE_TAGLINE, SITE_DESCRIPTION, OPERATOR_NAME, withOg } from '../lib/site';
 
 export const metadata = {
-  title: 'PR-KING | デジタル決済・ガジェット・ライフスタイル最新メディア',
-  description: '最新のトレンド、クレジットカード、サブスク、デジタルガジェットをシャープに切り取るテックマガジン',
+  title: { absolute: `${SITE_NAME} | ${SITE_TAGLINE}` },
+  description: SITE_DESCRIPTION,
   alternates: { canonical: '/' },
+  openGraph: withOg({ title: `${SITE_NAME} | ${SITE_TAGLINE}`, description: SITE_DESCRIPTION }, '/'),
 };
 
 export default function HomePage() {
   const posts = getAllPosts();
   const clusters = getHubs();
   const pickupPosts = getPickupPosts(5);
+
+  // 構造化データ: サイト名を検索結果に出すための WebSite と、運営者の Organization
+  const base = SITE_URL.replace(/\/$/, '');
+  const structuredData = [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'WebSite',
+      name: SITE_NAME,
+      url: `${base}/`,
+      description: SITE_DESCRIPTION,
+      inLanguage: 'ja',
+      publisher: { '@type': 'Organization', name: SITE_NAME, url: `${base}/about/` },
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'Organization',
+      name: SITE_NAME,
+      url: `${base}/`,
+      ...(OPERATOR_NAME ? { alternateName: OPERATOR_NAME } : {}),
+    },
+  ];
 
   // 添付画像 (Gizmodo) のレイアウト構成に記事を割り振る
   const leadPost = posts[0] || null;
@@ -24,6 +47,11 @@ export default function HomePage() {
   const remainingPosts = posts.slice(5);
 
   return (
+    <>
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+    />
     <div className="gizmodo-main-container">
       <div className="gizmodo-layout-grid">
         {/* ====================================================
@@ -217,5 +245,6 @@ export default function HomePage() {
         />
       </div>
     </div>
+    </>
   );
 }

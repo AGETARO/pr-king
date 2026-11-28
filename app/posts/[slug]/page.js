@@ -1,7 +1,7 @@
 // site/app/posts/[slug]/page.js - ギズモード風 記事詳細ページ
 import { getAllPostSlugs, getPostWithHtml, getRelatedPosts, getHubs, getPickupPosts } from '../../../lib/posts';
 import { getHubBySlug, hubPath } from '../../../lib/hubs';
-import { SITE_NAME, SITE_URL } from '../../../lib/site';
+import { SITE_NAME, SITE_URL, withOg } from '../../../lib/site';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import ShareButtons from '../../../components/ShareButtons';
@@ -22,14 +22,16 @@ export async function generateMetadata({ params }) {
     return {
       title: post.title,
       description: post.description,
-      openGraph: {
+      openGraph: withOg({
         title: post.title,
         description: post.description,
         type: 'article',
         publishedTime: `${post.published}T00:00:00+09:00`,
         modifiedTime: `${post.updated}T00:00:00+09:00`,
         images: [{ url: post.eyecatch || post.image }],
-      },
+        ...(post.hubSlug ? { section: getHubBySlug(post.hubSlug)?.name } : {}),
+      }, `/posts/${params.slug}/`),
+      ...(post.keyword ? { keywords: post.keyword.split(/\s+/).filter(Boolean) } : {}),
       alternates: {
         canonical: `/posts/${params.slug}/`,
       },
